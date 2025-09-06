@@ -1,7 +1,7 @@
-public class Queque {
+public class Queue {
 	Node first, last;
 
-	public void enqueque(int value) {
+	public void enqueue(int value) {
 		Node newNode = new Node(value);
 		if (last == null) {
 			first = newNode;
@@ -14,7 +14,7 @@ public class Queque {
 	}
 
 
-	public int dequeque() {
+	public int dequeue() {
     if (!hasItem()) {
         throw new IllegalStateException("Queue kosong!");
     }
@@ -23,7 +23,7 @@ public class Queque {
     if (first != null) {
         first.setPrev(null);
     } else {
-        last = null; // kalau kosong reset last juga
+        last = null; 
     }
     return value;
 }
@@ -31,7 +31,7 @@ public class Queque {
 public void swap(int index1, int index2) {
     if (index1 == index2) return;
 
-    if (index1 < 0 || index2 < 0) {
+if (index1 < 0 || index2 < 0) {
         throw new IndexOutOfBoundsException("Index tidak boleh negatif!");
     }
 
@@ -53,7 +53,6 @@ public void swap(int index1, int index2) {
     Node prev2 = node2.getPrev();
     Node next2 = node2.getNext();
 
-    // kalau node1 dan node2 bersebelahan
     if (next1 == node2) {
         if (prev1 != null) prev1.setNext(node2);
         else first = node2;
@@ -68,7 +67,6 @@ public void swap(int index1, int index2) {
         return;
     }
 
-    // kalau tidak bersebelahan
     if (prev1 != null) prev1.setNext(node2);
     else first = node2;
 
