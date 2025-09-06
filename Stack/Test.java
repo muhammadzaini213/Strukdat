@@ -14,7 +14,7 @@ public class Test {
 		//System.out.println(myStack.peek(1));
 		//System.out.println(myStack.peek(2));
 		//System.out.println(myStack.peek(4));
-		myStack.swap(5,6);
+		myStack.swap(2,3);
 		System.out.println(myStack.pop());
 		System.out.println(myStack.pop());
 		System.out.println(myStack.pop());

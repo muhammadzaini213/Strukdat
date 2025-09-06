@@ -13,71 +13,80 @@ public class Queque {
 		}
 	}
 
+
 	public int dequeque() {
-		if (!hasItem()) {
-			throw new IllegalStateException("Queque kosong!");
-		}
+    if (!hasItem()) {
+        throw new IllegalStateException("Queue kosong!");
+    }
+    int value = first.getValue();
+    first = first.getNext();
+    if (first != null) {
+        first.setPrev(null);
+    } else {
+        last = null; // kalau kosong reset last juga
+    }
+    return value;
+}
 
-		int value = last.getValue();
-		Node prevNode = last.getPrev();
-		last.setPrev(null);
-		last = prevNode;
-		return value;
-	}
+public void swap(int index1, int index2) {
+    if (index1 == index2) return;
 
-	public void swap(int index1, int index2) {
-		if (index1 == index2) return;
+    if (index1 < 0 || index2 < 0) {
+        throw new IndexOutOfBoundsException("Index tidak boleh negatif!");
+    }
 
-		if (index1 > index2) {
-			int temp = index1;
-			index1 = index2;
-			index2 = temp;
-		}
+    if (index1 > index2) {
+        int temp = index1;
+        index1 = index2;
+        index2 = temp;
+    }
 
-		try {
-			if (index1 < 0) {
-				throw new IndexOutOfBoundsException("Index tidak bisa negatif!");
-			}
+    Node node1 = getNode(index1);
+    Node node2 = getNode(index2);
 
-			Node node1 = getNode(index1);
-			Node node2 = getNode(index2);
-			if (node2 == null) {
-				throw new IndexOutOfBoundsException("Index ke-" + index2 + "tidak ditemukan!");
-			}
+    if (node1 == null || node2 == null) {
+        throw new IndexOutOfBoundsException("Index tidak ditemukan!");
+    }
 
-			Node tempPrev1;
-			if (node1 == first) {
-				tempPrev1 = null;
-			} else {
-				tempPrev1 = node1.getPrev();
-                        }
+    Node prev1 = node1.getPrev();
+    Node next1 = node1.getNext();
+    Node prev2 = node2.getPrev();
+    Node next2 = node2.getNext();
 
-			Node tempNext1 = node1.getNext();
-			Node tempNext2 = node2.getNext();
-			Node tempPrev2 = node2.getPrev();
-			if (tempNext1 == node2) {
-				node1.setNext(tempNext2);
-				node2.setNext(node1);
-				node1.setPrev(node2);
-				if(tempPrev1 != null) {
-					tempPrev1.setNext(node2);
-					node2.setNext(tempPrev1);
+    // kalau node1 dan node2 bersebelahan
+    if (next1 == node2) {
+        if (prev1 != null) prev1.setNext(node2);
+        else first = node2;
 
-				} else {
-					first = node2;
-				}
-			}
+        if (next2 != null) next2.setPrev(node1);
+        else last = node1;
 
-			if (last == node2) {
-				last = node1;
-			}
+        node2.setPrev(prev1);
+        node2.setNext(node1);
+        node1.setPrev(node2);
+        node1.setNext(next2);
+        return;
+    }
 
-			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
+    // kalau tidak bersebelahan
+    if (prev1 != null) prev1.setNext(node2);
+    else first = node2;
 
+    if (next1 != null) next1.setPrev(node2);
+    else last = node2;
+
+    if (prev2 != null) prev2.setNext(node1);
+    else first = node1;
+
+    if (next2 != null) next2.setPrev(node1);
+    else last = node1;
+
+    node1.setPrev(prev2);
+    node1.setNext(next2);
+    node2.setPrev(prev1);
+    node2.setNext(next1);
+
+}
 	private boolean hasItem() {
 		if (last != null) {
 			return true;
@@ -85,24 +94,30 @@ public class Queque {
 		return false;
 	}
 
-	public int peek(int index) {
-		if (index < 0) {
-			throw new IndexOutOfBoundsException("Mana ada index negatif!");
-		}
+public int peek(int index) {
+    if (index < 0) {
+        throw new IndexOutOfBoundsException("Index negatif tidak valid!");
+    }
 
-		Node current = last;
+    Node current = first;
+    for (int i = 0; i < index; i++) {
+        if (current == null) {
+            throw new IndexOutOfBoundsException("Index ke-" + index + " tidak ditemukan!");
+        }
+        current = current.getNext();
+    }
+    return current.getValue();
+}
 
-		for (int i = 0; i < index; i++) {
-			current = current.getPrev();
-		}
-		return current.getValue();
-	}
-
-	private Node getNode(int index) {
-		if (index < 0) {
-			throw new IndexOutOfBoundsException("Mana ada index negatif!");                             }                                 
-		Node current = last;
-		for (int i = 0; i < index; i++) {                         current = current.getPrev();                                                                }                 
-		return current;
-	}
+private Node getNode(int index) {
+    if (index < 0) {
+        throw new IndexOutOfBoundsException("Index negatif tidak valid!");
+    }
+    Node current = first;
+    for (int i = 0; i < index; i++) {
+        if (current == null) return null;
+        current = current.getNext();
+    }
+    return current;
+}
 }
