@@ -85,11 +85,8 @@ public class Queue {
 
 	}
 	private boolean hasItem() {
-		if (last != null) {
-			return true;
-		}
-		return false;
-	}
+        return last != null;
+    }
 
 	public int peek(int index) {
 		if (index < 0) {
