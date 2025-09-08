@@ -11,7 +11,7 @@ public class Test {
 
 		System.out.println(queue.peek(0));
 		System.out.println(queue.peek(1));
-		System.out.println(queue.peek(2));	
+		System.out.println(queue.peek(2));
 		System.out.println(queue.peek(3));
 		System.out.println(queue.peek(4));
 
@@ -22,5 +22,8 @@ public class Test {
 		System.out.println(queue.dequeue());
 		System.out.println(queue.dequeue());
 		System.out.println(queue.dequeue());
+
+        // Mengakses list yang sudah kosong
+        System.out.println(queue.peek());
 	}
 }
