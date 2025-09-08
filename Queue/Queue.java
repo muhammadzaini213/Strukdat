@@ -99,14 +99,11 @@ public class Queue {
 
 		Node current = first;
 		for (int i = 0; i < index; i++) {
-			if (current == null) {
-				throw new IndexOutOfBoundsException("Index ke-" + index + " tidak ditemukan!");
-			}
-			current = current.getNext();
+            current = current.getNext();
+            if (current == null) {
+                throw new IndexOutOfBoundsException("Index ke-" + index + " tidak ditemukan!");
+            }
 		}
-        if (current == null) {
-            throw new IndexOutOfBoundsException("Index ke-" + index + " tidak ditemukan!");
-        }
 		return current.getValue();
 	}
 
