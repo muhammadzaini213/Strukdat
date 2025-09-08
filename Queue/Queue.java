@@ -104,6 +104,9 @@ public class Queue {
 			}
 			current = current.getNext();
 		}
+        if (current == null) {
+            throw new IndexOutOfBoundsException("Index ke-" + index + " tidak ditemukan!");
+        }
 		return current.getValue();
 	}
 
