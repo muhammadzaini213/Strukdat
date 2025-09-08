@@ -12,7 +12,6 @@ public class Queue {
         last = newNode;
     }
 
-
 	public int dequeue() {
 		if (!hasItem()) {
 			throw new IllegalStateException("Queue kosong!");
@@ -22,7 +21,7 @@ public class Queue {
 		if (first != null) {
 			first.setPrev(null);
 		} else {
-			last = null; 
+			last = null;
 		}
 		return value;
 	}
@@ -84,6 +83,7 @@ public class Queue {
 		node2.setNext(next1);
 
 	}
+
 	private boolean hasItem() {
         return last != null;
     }
