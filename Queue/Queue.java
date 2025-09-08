@@ -88,6 +88,10 @@ public class Queue {
         return last != null;
     }
 
+    public int peek() {
+        return first.getValue();
+    }
+
 	public int peek(int index) {
 		if (index < 0) {
 			throw new IndexOutOfBoundsException("Index negatif tidak valid!");
