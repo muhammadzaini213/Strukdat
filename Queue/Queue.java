@@ -5,13 +5,12 @@ public class Queue {
 		Node newNode = new Node(value);
 		if (last == null) {
 			first = newNode;
-			last = newNode;
-		} else {
+        } else {
 			last.setNext(newNode);
 			newNode.setPrev(last);
-			last = newNode;
-		}
-	}
+        }
+        last = newNode;
+    }
 
 
 	public int dequeue() {
