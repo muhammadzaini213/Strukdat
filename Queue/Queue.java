@@ -7,12 +7,12 @@ public class Queue {
 		Node newNode = new Node(value);
 		if (last == null) {
 			first = newNode;
-        } else {
+		} else {
 			last.setNext(newNode);
 			newNode.setPrev(last);
-        }
-        last = newNode;
-    }
+		}
+		last = newNode;
+	}
 
 	public int dequeue() {
 		if (!hasItem()) {
@@ -87,28 +87,35 @@ public class Queue {
 	}
 
 	private boolean hasItem() {
-        return last != null;
-    }
+		return last != null;
+	}
 
-    public int peek() {
-        if (!hasItem()) {
-            throw new NoSuchElementException("Queue kosong!");
-        }
-        return first.getValue();
-    }
+	public int peek() {
+		if (!hasItem()) {
+			throw new NoSuchElementException("Queue kosong!");
+		}
+		return first.getValue();
+	}
 
 	public int peek(int index) {
+		if (first == null) {
+			throw new java.util.NoSuchElementException("Stack kosong!");
+		}
 		if (index < 0) {
 			throw new IndexOutOfBoundsException("Index negatif tidak valid!");
 		}
 
 		Node current = first;
-		for (int i = 0; i < index; i++) {
-            current = current.getNext();
-            if (current == null) {
-                throw new NoSuchElementException("Index ke-" + index + " tidak ditemukan!");
-            }
+		int i = 0;
+		while (i < index && current != null) {
+			current = current.getNext();
+			i++;
 		}
+
+		if (current == null) {
+			throw new NoSuchElementException("Index ke-" + index + " tidak ditemukan!");
+		}
+
 		return current.getValue();
 	}
 
@@ -117,9 +124,10 @@ public class Queue {
 			throw new IndexOutOfBoundsException("Index negatif tidak valid!");
 		}
 		Node current = first;
-		for (int i = 0; i < index; i++) {
-			if (current == null) return null;
+		int i = 0;
+		while (i < index && current != null) {
 			current = current.getNext();
+			i++;
 		}
 		return current;
 	}
