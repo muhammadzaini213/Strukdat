@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class Queue {
 	Node first, last;
 
@@ -14,7 +16,7 @@ public class Queue {
 
 	public int dequeue() {
 		if (!hasItem()) {
-			throw new IllegalStateException("Queue kosong!");
+			throw new NoSuchElementException("Queue kosong!");
 		}
 		int value = first.getValue();
 		first = first.getNext();
@@ -43,7 +45,7 @@ public class Queue {
 		Node node2 = getNode(index2);
 
 		if (node1 == null || node2 == null) {
-			throw new IndexOutOfBoundsException("Index tidak ditemukan!");
+			throw new NoSuchElementException("Index tidak ditemukan!");
 		}
 
 		Node prev1 = node1.getPrev();
@@ -89,6 +91,9 @@ public class Queue {
     }
 
     public int peek() {
+        if (!hasItem()) {
+            throw new NoSuchElementException("Queue kosong!");
+        }
         return first.getValue();
     }
 
@@ -101,7 +106,7 @@ public class Queue {
 		for (int i = 0; i < index; i++) {
             current = current.getNext();
             if (current == null) {
-                throw new IndexOutOfBoundsException("Index ke-" + index + " tidak ditemukan!");
+                throw new NoSuchElementException("Index ke-" + index + " tidak ditemukan!");
             }
 		}
 		return current.getValue();
