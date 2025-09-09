@@ -32,6 +32,8 @@ public class Test {
         queue.enqueue(5);
 
         System.out.println("\n=== Swap Data ===");
+        System.out.println("1, 2, 3, 4, 5");
+        System.out.println("^     ^");
         queue.swap(0,2);
 
         System.out.println("\n=== Dequeue Data ===");
