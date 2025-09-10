@@ -1,9 +1,10 @@
 import java.util.NoSuchElementException;
 
-public class Queue {
+public class Queue<T> {
 	Node first, last;
+	int size = 0;
 
-	public void enqueue(int value) {
+	public void enqueue(Object value) {
 		Node newNode = new Node(value);
 		if (last == null) {
 			first = newNode;
@@ -12,19 +13,21 @@ public class Queue {
 			newNode.setPrev(last);
 		}
 		last = newNode;
+		size++;
 	}
 
-	public int dequeue() {
+	public Object dequeue() {
 		if (!hasItem()) {
 			throw new NoSuchElementException("Queue kosong!");
 		}
-		int value = first.getValue();
+		Object value = first.getValue();
 		first = first.getNext();
 		if (first != null) {
 			first.setPrev(null);
 		} else {
 			last = null;
 		}
+		size--;
 		return value;
 	}
 
@@ -44,7 +47,7 @@ public class Queue {
 		Node node1 = getNode(index1);
 		Node node2 = getNode(index2);
 
-		if (node1 == null || node2 == null) {
+		if (node1 == null || node2 == null || index2 >= size) {
 			throw new NoSuchElementException("Index tidak ditemukan!");
 		}
 
@@ -90,14 +93,14 @@ public class Queue {
 		return last != null;
 	}
 
-	public int peek() {
+	public Object peek() {
 		if (!hasItem()) {
 			throw new NoSuchElementException("Queue kosong!");
 		}
 		return first.getValue();
 	}
 
-	public int peek(int index) {
+	public Object peek(int index) {
 		if (first == null) {
 			throw new java.util.NoSuchElementException("Stack kosong!");
 		}
@@ -112,7 +115,7 @@ public class Queue {
 			i++;
 		}
 
-		if (current == null) {
+		if (current == null || index >= size) {
 			throw new NoSuchElementException("Index ke-" + index + " tidak ditemukan!");
 		}
 
@@ -130,5 +133,9 @@ public class Queue {
 			i++;
 		}
 		return current;
+	}
+	
+	public int size() {
+		return size;
 	}
 }

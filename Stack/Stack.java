@@ -1,6 +1,7 @@
 public class Stack {
 
 	Node first;
+	int size = 0;
 
 	public boolean hasPop() {
 		if (first == null) {
@@ -14,6 +15,7 @@ public class Stack {
 		Node newNode = new Node(value);
 		newNode.setNext(first);
 		first = newNode;
+		size++;
 	}
 
 	public int pop() {
@@ -22,6 +24,7 @@ public class Stack {
 		}
 		int value = first.getValue();
 		first = first.getNext();
+		size--;
 		return value;
 	}
 
@@ -41,7 +44,7 @@ public class Stack {
 			Node node1 = getNode(index1);
 			Node node2 = getNode(index2);
 
-			if (node2 == null) {
+			if (node2 == null || index2 >= size) {
 				throw new IndexOutOfBoundsException("Index ke-" + index2 + " tidak ditemukan!");
 
 			}
@@ -107,11 +110,15 @@ public class Stack {
 			target = target.getNext();
 			i++;
 		}
-		if (target == null) {
+		if (target == null || index >= size) {
 			throw new IndexOutOfBoundsException("Value dengan index ke-" + index +" tidak ditemukan");
 		}
 		return target.getValue();
 
+	}
+
+	public int size() {
+		return size;
 	}
 }
 
