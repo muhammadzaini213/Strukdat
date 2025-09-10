@@ -1,8 +1,8 @@
 public class Node {
-	int value;
+	Object value;
 	Node next;
 
-	public Node(int value) {
+	public Node(Object value) {
 		this.value = value;
 	}
 
@@ -14,7 +14,7 @@ public class Node {
 		return next;
 	}
 
-	public int getValue(){
+	public Object getValue(){
 		return value;
 	}
 }

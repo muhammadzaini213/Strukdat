@@ -1,4 +1,4 @@
-public class Stack {
+public class Stack<T> {
 
 	Node first;
 	int size = 0;
@@ -11,18 +11,18 @@ public class Stack {
 		return true;
 	}
 
-	public void push(int value) {
+	public void push(Object value) {
 		Node newNode = new Node(value);
 		newNode.setNext(first);
 		first = newNode;
 		size++;
 	}
 
-	public int pop() {
+	public Object pop() {
 		if (!hasPop()){
 			throw new IllegalStateException("Stack kosong!");
 		}
-		int value = first.getValue();
+		Object value = first.getValue();
 		first = first.getNext();
 		size--;
 		return value;
@@ -97,7 +97,7 @@ public class Stack {
 		return target;
 	}
 
-	public int peek (int index) {
+	public Object peek (int index) {
 		if (first == null) {
 			throw new java.util.NoSuchElementException("Stack kosong!");
 		}
