@@ -109,7 +109,9 @@ public class Stack {
 		}
 		if (target == null) {
 			throw new IndexOutOfBoundsException("Value dengan index ke-" + index +" tidak ditemukan");
-			return target.getValue();
-
 		}
+		return target.getValue();
+
 	}
+}
+
