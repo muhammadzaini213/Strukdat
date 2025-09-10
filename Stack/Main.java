@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 	Scanner sc = new Scanner(System.in);
-	Queue<Object> queue = new Queue<>();
+	Stack<Object> stack = new Stack<>();
 	String currentType = "String";
 	public static void main (String args[]) {
 		Main m = new Main();
@@ -13,13 +13,13 @@ public class Main {
 
 	private void menu(){
 		print("");
-		print(l() + " Queue " + currentType + " " + l());
-		print("1. Lihat semua isi Queue");
-		print("2. Lihat isi Queue dalam index");
-		print("3. Tambahkan isi Queue (Enqueue)");
-		print("4. Keluarkan isi Queue (Dequeue)");
-		print("5. Tukar isi Queue");
-		print("6. Ukuran/Size Queue");
+		print(l() + " Stack " + currentType + " " + l());
+		print("1. Lihat semua isi Stack");
+		print("2. Lihat isi Stack dalam index");
+		print("3. Tambahkan isi Stack (Push)");
+		print("4. Keluarkan isi Stack (Pop)");
+		print("5. Tukar isi Stack");
+		print("6. Ukuran/Size Stack");
 		print("7. Ganti tipe data");
 
 		placeholder("Masukkan pilihan (1-7): ");
@@ -62,15 +62,15 @@ public class Main {
 	private void getAll() {
 		String data = "";
 
-		if (queue.size() == 0) {
-			print("Queue Kosong!");
+		if (stack.size() == 0) {
+			print("Stack Kosong!");
 			return;
 		}
-		for(int i = 0; i <= queue.size()-1; i++) {
+		for(int i = 0; i <= stack.size()-1; i++) {
 				if (i == 0) {
-					data = data + "[" + queue.peek(i) + "]";
+					data = data + "[" + stack.peek(i) + "]";
 				} else {
-					data = data + ", [" + queue.peek(i) + "]";
+					data = data + ", [" + stack.peek(i) + "]";
 				}
 			}
 
@@ -79,12 +79,12 @@ public class Main {
 	}
 
 	private void getIndex() {
-		if (queue.size() == 0) {
-			print("Queue kosong!");
+		if (stack.size() == 0) {
+			print("Stack kosong!");
 			return;
 		}
 
-		placeholder("Masukkan Index yang ingin dilihat: (0-" + (queue.size()-1) + "): "); 
+		placeholder("Masukkan Index yang ingin dilihat: (0-" + (stack.size()-1) + "): "); 
 		int index;
                 try {
                         index = Integer.parseInt(sc.nextLine());
@@ -93,12 +93,12 @@ public class Main {
                         return;
                 }
 
-		if (index >= queue.size() || index < 0) {
+		if (index >= stack.size() || index < 0) {
 			print("Index ada diluar batas yang diperbolehkan!");
 			return;
 		}
 
-		print("Index " + index + " dari Queue memiliki value: " + queue.peek(index));
+		print("Index " + index + " dari Stack memiliki value: " + stack.peek(index));
 	}
 
 	private void add() {
@@ -106,12 +106,12 @@ public class Main {
 		switch (currentType) {
 			case "String":
 				String valueString = sc.nextLine();
-				queue.enqueue(valueString);
+				stack.push(valueString);
 				break;
 			case "int":
 				try {
 					int valueInt = Integer.parseInt(sc.nextLine());
-					queue.enqueue(valueInt);
+					stack.push(valueInt);
 				} catch (NumberFormatException e) {
 					print("Input bukan angka yang valid!");
 				}
@@ -124,34 +124,34 @@ public class Main {
 	}
 
 	private void out() {
-		if (queue.size() == 0) {
-			print("Queue Kosong!");
+		if (stack.size() == 0) {
+			print("Stack Kosong!");
 			return;
 		}
-		print("Data keluar dari Queue: " + queue.dequeue());
+		print("Data keluar dari Stack: " + stack.pop());
 	}
 
 	private void swap() {
-		if (queue.size() == 0) {
-			print("Queue kosong!");
+		if (stack.size() == 0) {
+			print("Stack kosong!");
 			return;
 		}
 
 		try {
-		placeholder("Masukkan index pertama yang ingin di swap (0-" + (queue.size()-1) + "): ");
+		placeholder("Masukkan index pertama yang ingin di swap (0-" + (stack.size()-1) + "): ");
 		int index1 = Integer.parseInt(sc.nextLine());
-		placeholder("Masukkan index kedua yang ingin di swap (0-" + (queue.size()-1) + "): ");
+		placeholder("Masukkan index kedua yang ingin di swap (0-" + (stack.size()-1) + "): ");
 		int index2 = Integer.parseInt(sc.nextLine());
 
 		if (index1 < 0 || index2 < 0) {
 			print("Index tidak boleh begatif!");
 			return;
 		}
-		if (index1 >= queue.size() || index2 >= queue.size()) {
+		if (index1 >= stack.size() || index2 >= stack.size()) {
 			print("Index melebihi batas yang diperbolehkan!");
 			return;
 		}
-		queue.swap(index1, index2);
+		stack.swap(index1, index2);
 
 		} catch (NumberFormatException e) {
 			print("Input bukan angka yang valid!");
@@ -159,7 +159,7 @@ public class Main {
 	}
 
 	private void size() {
-		print("Ukuran/Size Queue: " + queue.size());
+		print("Ukuran/Size Stack: " + stack.size());
 	}
 
 	private void change() {
@@ -173,18 +173,18 @@ public class Main {
 			case 1:
 				if (currentType.equals("String")) return;
 				currentType = "String";
-				placeholder("Apakah anda yakin? Mengganti tipe data akan mereset Queue! (Y/n)");
+				placeholder("Apakah anda yakin? Mengganti tipe data akan mereset Stack! (Y/n)");
 				String conf = sc.nextLine();
 				if (conf.equals("n")) return;
-				queue = new Queue<>();
+				stack = new Stack<>();
 				break;
 			case 2: 
 				if (currentType.equals("int")) return;
 				currentType = "int";
-				placeholder("Apakah anda yakin? Mengganti tipe data akan mereset Queue! (Y/n)");
+				placeholder("Apakah anda yakin? Mengganti tipe data akan mereset Stack! (Y/n)");
                                 String conf2 = sc.nextLine();
 				if (conf2.equals("n")) return;
-				queue = new Queue<>();
+				stack = new Stack<>();
 				break;
 			default:
 				print("Anda memilih diluar opsi!");
