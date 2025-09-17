@@ -1,3 +1,5 @@
+package amerika.nodes.simplenode;
+
 public class NodeInt{
 	private int value;
 	private NodeInt next;

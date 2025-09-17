@@ -1,3 +1,5 @@
+package amerika.nodes.simplenode;
+
 public class NodeChar{
 	private char value;
 	private NodeChar next;

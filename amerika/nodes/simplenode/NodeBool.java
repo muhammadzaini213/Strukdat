@@ -1,3 +1,5 @@
+package amerika.nodes.simplenode;
+
 public class NodeBool{
 	private boolean value;
 	private NodeBool next;
@@ -14,7 +16,7 @@ public class NodeBool{
 		return next;
 	}
 
-	public int getValue(){
+	public boolean getValue(){
 		return value;
 	}
 }

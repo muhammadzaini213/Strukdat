@@ -1,3 +1,5 @@
+package amerika.nodes.simplenode;
+
 public class NodeFloat{
 	private float value;
 	private NodeFloat next;
