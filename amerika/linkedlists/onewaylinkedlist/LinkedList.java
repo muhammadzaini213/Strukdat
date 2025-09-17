@@ -152,5 +152,10 @@ public class LinkedList {
 	public int size() {
 		return size;
 	}
+
+	public void clear() {
+		first = null;
+		size = 0;
+	}
 }
 

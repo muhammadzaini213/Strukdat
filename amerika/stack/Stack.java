@@ -21,4 +21,17 @@ public class Stack extends LinkedList {
 		size--;
 		return pop;
 	}
+
+	public Node peekFromStack() {	
+		if (first == null) {
+			throw new NoSuchElementException("Stack Kosong!");
+		}
+
+		Node peek = first;
+		return first;
+	}
+
+	public boolean isEmpty() {
+		return size == 0;
+	}
 }
