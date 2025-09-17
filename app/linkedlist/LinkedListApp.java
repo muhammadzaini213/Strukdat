@@ -1,8 +1,10 @@
 package app.linkedlist;
 
-import amerika.linkedlists.onewaylinkedlist.LinkedListBool;
+import amerika.linkedlists.onewaylinkedlist.LinkedListChar;
 
 public class LinkedListApp {
+	
+	LinkedListChar listBool = new LinkedListChar();
 
 	public static void main(String args[]) {
 		LinkedListApp app = new LinkedListApp();
@@ -10,6 +12,16 @@ public class LinkedListApp {
 	}
 
 	private void menu() {
-		System.out.println("Test");
+		listBool.add('s');
+		listBool.add('d');
+		listBool.add('f');
+		listBool.add('g');
+
+		listBool.remove(2);
+		listBool.insert('z', 2);
+		for(int i = 0; i < 4; i++) {
+			System.out.println(listBool.get(i));
+		}
+		
 	}
 }

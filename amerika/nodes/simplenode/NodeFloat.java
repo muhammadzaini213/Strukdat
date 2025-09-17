@@ -1,19 +1,10 @@
 package amerika.nodes.simplenode;
 
-public class NodeFloat{
+public class NodeFloat extends Node {
 	private float value;
-	private NodeFloat next;
 
 	public NodeFloat(float value) {
 		this.value = value;
-	}
-
-	public void setNext(NodeFloat next) {
-		this.next = next;
-	}
-
-	public NodeFloat getNext(){
-		return next;
 	}
 
 	public float getValue(){
