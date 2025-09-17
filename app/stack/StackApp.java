@@ -17,7 +17,8 @@ public class StackApp {
 		stack.push(true);
 		stack.push(true);
 
-		System.out.println(stack.pop());
+		System.out.println(stack.peek());
+		System.out.println(stack.peek());
 		System.out.println(stack.pop());
 		System.out.println(stack.pop());
 		System.out.println(stack.pop());

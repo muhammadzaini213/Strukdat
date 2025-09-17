@@ -12,4 +12,10 @@ public class StackBool extends Stack {
 		NodeBool pop = (NodeBool) popFromStack();
 		return pop.getValue();
 	}
+
+	public boolean peek() {
+		NodeBool peek = (NodeBool) peekFromStack();
+		return peek.getValue();
+	}
+
 }
