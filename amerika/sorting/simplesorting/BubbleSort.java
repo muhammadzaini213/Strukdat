@@ -6,7 +6,7 @@ import amerika.linkedlists.onewaylinkedlist.LinkedListChar;
 import amerika.linkedlists.onewaylinkedlist.LinkedListFloat;
 import amerika.linkedlists.onewaylinkedlist.LinkedListInt;
 
-public class BubbleSorting {
+public class BubbleSort {
 
     public void sort(LinkedList linkedList) {
         int n = linkedList.size();
