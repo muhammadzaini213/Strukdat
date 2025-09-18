@@ -4,17 +4,17 @@ import amerika.linkedlists.onewaylinkedlist.LinkedList;
 
 public class SimpleSorting {
     
-    private BubbleSorting bubbleSorting;
+    private BubbleSort bubbleSorting;
     private InsertionSort insertionSort;
     private SelectionSort selectionSort;
 
     public SimpleSorting() {
-        bubbleSorting = new BubbleSorting();
+        bubbleSorting = new BubbleSort();
         insertionSort = new InsertionSort();
         selectionSort = new SelectionSort();
     }
 
-    public void bubbleSorting(LinkedList linkedList) {
+    public void bubbleSort(LinkedList linkedList) {
         bubbleSorting.sort(linkedList);
     }
 

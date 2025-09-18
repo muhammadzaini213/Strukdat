@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import amerika.linkedlists.onewaylinkedlist.LinkedListBool;
 import amerika.sorting.simplesorting.SelectionSort;
+import amerika.sorting.simplesorting.SimpleSorting;
 
 public class LinkedListApp {
 	
@@ -22,6 +23,8 @@ public class LinkedListApp {
 		listBool.add(true);
 
 		System.out.println(Arrays.toString(listBool.getAll()));
-		SelectionSort.sort(listBool);
+
+		SimpleSorting sorting = new SimpleSorting();
+		sorting.bubbleSort(listBool);
 		System.out.println(Arrays.toString(listBool.getAll()));	}
 }
