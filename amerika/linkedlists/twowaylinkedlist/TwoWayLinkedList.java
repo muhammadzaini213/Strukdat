@@ -17,6 +17,7 @@ public class TwoWayLinkedList extends LinkedList {
 		if(this.first == null) {
 			updateFirst(newNode);
 			last = newNode;
+
 			size++;
 			return;
 		}
@@ -46,8 +47,8 @@ public class TwoWayLinkedList extends LinkedList {
 		TwoWayNode prevNode = (TwoWayNode) nextNode.getPrev();
 
 		if (size == 0) {
-			updateFirst(newNode);
-			last = newNode;
+			updateFirst((TwoWayNode) newNode);
+			last = (TwoWayNode) newNode;
 			size++;
 			return;
 		}
@@ -55,21 +56,21 @@ public class TwoWayLinkedList extends LinkedList {
 		if(index == 0) {
 			newNode.setNext(first);
 			first.setPrev(newNode);
-			updateFirst(newNode);
+			updateFirst((TwoWayNode) newNode);
 			size++;
 			return;
 		}
 
 		if(index == size) {
 			prevNode.setNext(newNode);
-			newNode.setPrev(prevNode);
-			last = newNode;
+			((TwoWayNode) newNode).setPrev(prevNode);
+			last = (TwoWayNode) newNode;
 			size++;
 			return;
 		}
 
 		prevNode.setNext(newNode);
-		newNode.setPrev(prevNode);
+		((TwoWayNode) newNode).setPrev(prevNode);
 
 		newNode.setNext(nextNode);
 		nextNode.setPrev(newNode);
@@ -111,7 +112,7 @@ public class TwoWayLinkedList extends LinkedList {
 	public void swap(int index1, int index2) {
 		if (index1 == index2) return;
 
-		if (index1 < 0 || index2 < 0 || || index1 >= size || index2 >= size) {
+		if (index1 < 0 || index2 < 0 || index1 >= size || index2 >= size) {
 			throw new IndexOutOfBoundsException("Index di luar batas!");
 		}
 
@@ -146,11 +147,11 @@ public class TwoWayLinkedList extends LinkedList {
 			return;
 		}
 
-		if (prev1 -= null) {
+		if (prev1 == null) {
 			prev1.setNext(node2);
 			node2.setPrev(prev1);
 		} else {
-			first = node2:
+			first = node2;
 		}
 
 		if (prev2 != null) {

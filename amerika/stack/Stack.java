@@ -28,7 +28,7 @@ public class Stack extends LinkedList {
 		}
 
 		Node peek = first;
-		return first;
+		return peek;
 	}
 
 	public boolean isEmpty() {
