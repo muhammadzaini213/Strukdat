@@ -85,7 +85,6 @@ public class LinkedList {
 		Node nextNode = getNode(index + 1);
 
 		if (nextNode == null) {
-			Node currentNode = getNode(index);
 			prevNode.setNext(null);
 			size--;
 			return;
@@ -102,7 +101,6 @@ public class LinkedList {
 			throw new IndexOutOfBoundsException("Index di luar batas!");
 		}
 
-		// pastikan index1 < index2
 		if (index1 > index2) {
 			int temp = index1;
 			index1 = index2;
@@ -117,7 +115,6 @@ public class LinkedList {
 		Node next1 = node1.getNext();
 		Node next2 = node2.getNext();
 
-		// jika node bersebelahan
 		if (next1 == node2) {
 			if (prev1 != null) prev1.setNext(node2);
 			else first = node2;
@@ -127,7 +124,6 @@ public class LinkedList {
 			return;
 		}
 
-		// swap umum
 		if (prev1 != null) prev1.setNext(node2);
 		else first = node2;
 

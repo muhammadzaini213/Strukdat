@@ -2,19 +2,14 @@ package amerika.nodes.twowaynode;
 
 import amerika.nodes.simplenode.NodeChar;
 
-public class TwoWayNodeChar extends NodeChar {
-
-	private TwoWayNodeChar prev;
+public class TwoWayNodeChar extends TwoWayNode {
+	private char value;
 
 	public TwoWayNodeChar(char value) {
-		super(value);
-	}
-	
-	public void setPrev(TwoWayNodeChar prev) {
-		this.prev = prev;
+		this.value = value;
 	}
 
-	public TwoWayNodeChar getPrev() {
-		return prev;
+	public char getValue() {
+		return value;
 	}
 }

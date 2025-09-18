@@ -1,21 +1,15 @@
-
 package amerika.nodes.twowaynode;
 
 import amerika.nodes.simplenode.NodeBool;
 
-public class TwoWayNodeBool extends NodeBool {
-
-	private TwoWayNodeBool prev;
+public class TwoWayNodeBool extends TwoWayNode {
+	private boolean value;
 
 	public TwoWayNodeBool(boolean value) {
-		super(value);
-	}
-	
-	public void setPrev(TwoWayNodeBool prev) {
-		this.prev = prev;
+		this.value = value;
 	}
 
-	public TwoWayNodeBool getPrev() {
-		return prev;
+	public boolean getValue() {
+		return value;
 	}
 }

@@ -1,20 +1,15 @@
-package amerika.nodes.twowaynode
-;
+package amerika.nodes.twowaynode;
+
 import amerika.nodes.simplenode.NodeFloat;
 
-public class TwoWayNodeFloat extends NodeFloat {
-
-	private TwoWayNodeFloat prev;
+public class TwoWayNodeFloat extends TwoWayNode {
+	private float value;
 
 	public TwoWayNodeFloat(float value) {
-		super(value);
+		this.value = value;
 	}
 
-	public void setPrev(TwoWayNodeFloat prev) {
-		this.prev = prev;
-	}
-
-	public TwoWayNodeFloat getPrev() {
-		return prev;
+	public float getValue() {
+		return value;
 	}
 }

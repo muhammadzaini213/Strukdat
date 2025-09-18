@@ -2,19 +2,14 @@ package amerika.nodes.twowaynode;
 
 import amerika.nodes.simplenode.NodeInt;
 
-public class TwoWayNodeInt extends NodeInt {
-
-	private TwoWayNodeInt prev;
+public class TwoWayNodeInt extends TwoWayNode {
+	private int value;
 
 	public TwoWayNodeInt(int value) {
-		super(value);
+		this.value = value;
 	}
 
-	public void setPrev(TwoWayNodeInt prev) {
-		this.prev = prev;
-	}
-
-	public TwoWayNodeInt getPrev() {
-		return prev;
+	public int getValue() {
+		return value;
 	}
 }
