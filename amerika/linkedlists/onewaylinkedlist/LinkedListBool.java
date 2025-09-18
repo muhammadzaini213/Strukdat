@@ -26,9 +26,10 @@ public class LinkedListBool extends LinkedList {
 		Node[] nodeArr = (Node[]) getArray();
 
 		for (int i = 0; i < arr.length; i++) {
-			arr[i] = ((NodeBool)nodeArr[i]).getValue();
+			arr[i] = ((NodeBool) nodeArr[i]).getValue();
 		}
 
 		return arr;
 	}
+
 }

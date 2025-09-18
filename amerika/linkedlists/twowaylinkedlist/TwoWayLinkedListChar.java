@@ -1,7 +1,6 @@
 package amerika.linkedlists.twowaylinkedlist;
 
 import amerika.nodes.simplenode.Node;
-import amerika.nodes.simplenode.NodeChar;
 import amerika.nodes.twowaynode.TwoWayNode;
 import amerika.nodes.twowaynode.TwoWayNodeChar;
 

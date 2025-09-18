@@ -1,10 +1,13 @@
 package app.linkedlist;
 
-import amerika.linkedlists.onewaylinkedlist.LinkedListChar;
+import java.util.Arrays;
+
+import amerika.linkedlists.onewaylinkedlist.LinkedListBool;
+import amerika.sorting.simplesorting.SelectionSort;
 
 public class LinkedListApp {
 	
-	LinkedListChar listBool = new LinkedListChar();
+	LinkedListBool listBool = new LinkedListBool();
 
 	public static void main(String args[]) {
 		LinkedListApp app = new LinkedListApp();
@@ -12,12 +15,13 @@ public class LinkedListApp {
 	}
 
 	private void menu() {
-		listBool.add('s');
-		listBool.add('d');
-		listBool.add('f');
-		listBool.add('g');
-		listBool.add('g');
+		listBool.add(true);
+		listBool.add(false);
+		listBool.add(true);
+		listBool.add(false);
+		listBool.add(true);
 
-		System.out.println(listBool.getAll());
-	}
+		System.out.println(Arrays.toString(listBool.getAll()));
+		SelectionSort.sort(listBool);
+		System.out.println(Arrays.toString(listBool.getAll()));	}
 }

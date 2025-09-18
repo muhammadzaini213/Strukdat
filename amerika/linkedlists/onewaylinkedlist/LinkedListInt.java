@@ -25,7 +25,7 @@ public class LinkedListInt extends LinkedList {
 
 	public int[] getAll() {
 		int[] arr = new int[size()];
-		Node[] nodeArr = (Node[]) getArray();
+		Node[] nodeArr = getArray();
 
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = ((NodeInt) nodeArr[i]).getValue();

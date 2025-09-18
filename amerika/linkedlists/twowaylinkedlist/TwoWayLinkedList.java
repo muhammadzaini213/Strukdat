@@ -173,4 +173,5 @@ public class TwoWayLinkedList extends LinkedList {
 		last = null;
 		size = 0;
 	}
+	
 }

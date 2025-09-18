@@ -2,7 +2,6 @@ package amerika.linkedlists.twowaylinkedlist;
 
 import amerika.nodes.simplenode.Node;
 import amerika.nodes.twowaynode.TwoWayNode;
-import amerika.nodes.twowaynode.TwoWayNodeFloat;
 import amerika.nodes.twowaynode.TwoWayNodeInt;
 
 public class TwoWayLinkedListInt extends TwoWayLinkedList {

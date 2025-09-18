@@ -31,4 +31,5 @@ public class LinkedListChar extends LinkedList {
 
 		return arr;
 	}
+
 }
