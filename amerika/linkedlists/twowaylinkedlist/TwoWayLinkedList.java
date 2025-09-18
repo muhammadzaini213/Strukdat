@@ -148,8 +148,8 @@ public class TwoWayLinkedList extends LinkedList {
 		}
 
 		if (prev1 == null) {
-			prev1.setNext(node2);
-			node2.setPrev(prev1);
+			updateFirst(node2);
+			node2.setPrev(null);
 		} else {
 			first = node2;
 		}

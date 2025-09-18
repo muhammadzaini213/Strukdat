@@ -2,9 +2,10 @@
 package amerika.linkedlists.onewaylinkedlist;
 
 import amerika.nodes.simplenode.Node;
+import amerika.nodes.simplenode.NodeFloat;
 import amerika.nodes.simplenode.NodeInt;
 
-public class LinkedListInt extends LinkedList{
+public class LinkedListInt extends LinkedList {
 
 	public void add(int value) {
 		Node newNode = new NodeInt(value);
@@ -16,10 +17,21 @@ public class LinkedListInt extends LinkedList{
 		insertToLinkedList(newNode, index);
 	}
 
-	public int get(int index) {	
-		NodeInt target = (NodeInt) getLinkedListNode(index); 
+	public int get(int index) {
+		NodeInt target = (NodeInt) getLinkedListNode(index);
 		return target.getValue();
 
+	}
+
+	public int[] getAll() {
+		int[] arr = new int[size()];
+		Node[] nodeArr = (Node[]) getArray();
+
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = ((NodeInt) nodeArr[i]).getValue();
+		}
+
+		return arr;
 	}
 
 }

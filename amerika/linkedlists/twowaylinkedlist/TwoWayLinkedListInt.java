@@ -1,6 +1,8 @@
 package amerika.linkedlists.twowaylinkedlist;
 
+import amerika.nodes.simplenode.Node;
 import amerika.nodes.twowaynode.TwoWayNode;
+import amerika.nodes.twowaynode.TwoWayNodeFloat;
 import amerika.nodes.twowaynode.TwoWayNodeInt;
 
 public class TwoWayLinkedListInt extends TwoWayLinkedList {
@@ -24,6 +26,17 @@ public class TwoWayLinkedListInt extends TwoWayLinkedList {
         TwoWayNodeInt target = (TwoWayNodeInt) getLinkedListNode(index);
         return target.getValue();
 
+    }
+
+    public int[] getAll() {
+        int[] arr = new int[size()];
+        Node[] nodeArr = (Node[]) getArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = ((TwoWayNodeInt) nodeArr[i]).getValue();
+        }
+
+        return arr;
     }
 
 }

@@ -1,5 +1,6 @@
 package amerika.linkedlists.twowaylinkedlist;
 
+import amerika.nodes.simplenode.NodeBool;
 import amerika.nodes.twowaynode.TwoWayNode;
 import amerika.nodes.twowaynode.TwoWayNodeBool;
 
@@ -24,6 +25,17 @@ public class TwoWayLinkedListBool extends TwoWayLinkedList {
         TwoWayNodeBool target = (TwoWayNodeBool) getLinkedListNode(index);
         return target.getValue();
 
+    }
+
+    public boolean[] getAll() {
+        boolean[] arr = new boolean[size()];
+        TwoWayNode[] nodeArr = (TwoWayNode[]) getArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = ((TwoWayNodeBool) nodeArr[i]).getValue();
+        }
+
+        return arr;
     }
 
 }

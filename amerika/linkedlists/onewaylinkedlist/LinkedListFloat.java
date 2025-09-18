@@ -2,9 +2,10 @@
 package amerika.linkedlists.onewaylinkedlist;
 
 import amerika.nodes.simplenode.Node;
+import amerika.nodes.simplenode.NodeChar;
 import amerika.nodes.simplenode.NodeFloat;
 
-public class LinkedListFloat extends LinkedList{
+public class LinkedListFloat extends LinkedList {
 
 	public void add(float value) {
 		Node newNode = new NodeFloat(value);
@@ -16,10 +17,21 @@ public class LinkedListFloat extends LinkedList{
 		insertToLinkedList(newNode, index);
 	}
 
-	public float get(int index) {	
-		NodeFloat target = (NodeFloat) getLinkedListNode(index); 
+	public float get(int index) {
+		NodeFloat target = (NodeFloat) getLinkedListNode(index);
 		return target.getValue();
 
+	}
+
+	public float[] getAll() {
+		float[] arr = new float[size()];
+		Node[] nodeArr = (Node[]) getArray();
+
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = ((NodeFloat) nodeArr[i]).getValue();
+		}
+
+		return arr;
 	}
 
 }

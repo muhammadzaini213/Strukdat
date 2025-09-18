@@ -1,5 +1,7 @@
 package amerika.linkedlists.twowaylinkedlist;
 
+import amerika.nodes.simplenode.Node;
+import amerika.nodes.simplenode.NodeChar;
 import amerika.nodes.twowaynode.TwoWayNode;
 import amerika.nodes.twowaynode.TwoWayNodeChar;
 
@@ -26,4 +28,14 @@ public class TwoWayLinkedListChar extends TwoWayLinkedList {
 
     }
 
+    public char[] getAll() {
+        char[] arr = new char[size()];
+        Node[] nodeArr = (Node[]) getArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = ((TwoWayNodeChar) nodeArr[i]).getValue();
+        }
+
+        return arr;
+    }
 }

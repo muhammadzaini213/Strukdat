@@ -134,6 +134,15 @@ public class LinkedList {
 		node2.setNext(next1);
 	}
 
+	public Node[] getArray() {
+		Node[] arr = new Node[size()];
+		
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = getNode(i);
+		}
+
+		return arr;
+	}
 
 	protected Node getNode(int index) {
 		Node target = first;

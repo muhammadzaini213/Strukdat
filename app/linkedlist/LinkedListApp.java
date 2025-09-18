@@ -16,12 +16,8 @@ public class LinkedListApp {
 		listBool.add('d');
 		listBool.add('f');
 		listBool.add('g');
+		listBool.add('g');
 
-		listBool.remove(2);
-		listBool.insert('z', 2);
-		for(int i = 0; i < 4; i++) {
-			System.out.println(listBool.get(i));
-		}
-		
+		System.out.println(listBool.getAll());
 	}
 }

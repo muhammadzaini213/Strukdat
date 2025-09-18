@@ -3,7 +3,7 @@ package amerika.linkedlists.onewaylinkedlist;
 import amerika.nodes.simplenode.Node;
 import amerika.nodes.simplenode.NodeChar;
 
-public class LinkedListChar extends LinkedList{
+public class LinkedListChar extends LinkedList {
 
 	public void add(char value) {
 		Node newNode = new NodeChar(value);
@@ -15,11 +15,20 @@ public class LinkedListChar extends LinkedList{
 		insertToLinkedList(newNode, index);
 	}
 
-	public char get(int index) {	
-		NodeChar target = (NodeChar) getLinkedListNode(index); 
+	public char get(int index) {
+		NodeChar target = (NodeChar) getLinkedListNode(index);
 		return target.getValue();
 
 	}
 
-}
+	public char[] getAll() {
+		char[] arr = new char[size()];
+		Node[] nodeArr = (Node[]) getArray();
 
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = ((NodeChar) nodeArr[i]).getValue();
+		}
+
+		return arr;
+	}
+}
