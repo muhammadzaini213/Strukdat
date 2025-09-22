@@ -29,4 +29,16 @@ public class Inputs {
 		
 		return false;
 	}  
+
+	public int switchOption() {
+		while(true) {
+			System.out.print("Aktifkan(Y), Matikan(n), Batalkan(e): ");
+
+			char input = sc.nextLine().toLowerCase().charAt(0);
+
+			if (input == 'y') return 1;
+			else if (input == 'n') return 0;
+			else return -1;
+		}
+	}
 }

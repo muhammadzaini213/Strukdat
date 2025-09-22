@@ -25,6 +25,6 @@ public class LinkedListApp {
 		System.out.println(Arrays.toString(listBool.getAll()));
 
 		SimpleSorting sorting = new SimpleSorting();
-		sorting.bubbleSort(listBool);
+		sorting.bubbleSort(listBool, true);
 		System.out.println(Arrays.toString(listBool.getAll()));	}
 }
