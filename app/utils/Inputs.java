@@ -23,12 +23,10 @@ public class Inputs {
 	public boolean confirmation() {
 		System.out.print("Apakah anda yakin? Semua data yang dimasukkan sebelumnya akan hilang!(Y/n)");
 
-		char input = sc.nextLine().toLowerCase().charAt(0);
-
-		if (input == 'y') return true;
-		
-		return false;
-	}  
+		String input = sc.nextLine().toLowerCase();
+        if (input.isEmpty()) return true;
+        return input.charAt(0) == 'y';
+    }
 
 	public int switchOption() {
 		while(true) {
