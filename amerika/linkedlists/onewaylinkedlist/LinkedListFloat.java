@@ -23,6 +23,16 @@ public class LinkedListFloat extends LinkedList {
 
 	}
 
+
+	public LinkedList copy() {
+		LinkedListFloat linkedList = new LinkedListFloat();
+
+		for (int i = 0; i < size(); i++) {
+			linkedList.add(get(i));
+		}
+
+		return linkedList;
+	}
 	public float[] getAll() {
 		float[] arr = new float[size()];
 		Node[] nodeArr = (Node[]) getArray();

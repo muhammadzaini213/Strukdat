@@ -26,6 +26,17 @@ public class TwoWayLinkedListBool extends TwoWayLinkedList {
 
     }
 
+    
+    public TwoWayLinkedListBool copy(){
+	TwoWayLinkedListBool linkedList = new TwoWayLinkedListBool();
+
+	    for (int i = 0; i < size(); i++) {
+		    linkedList.add(get(i));
+	    }
+
+	    return linkedList;
+    }
+
     public boolean[] getAll() {
         boolean[] arr = new boolean[size()];
         TwoWayNode[] nodeArr = (TwoWayNode[]) getArray();

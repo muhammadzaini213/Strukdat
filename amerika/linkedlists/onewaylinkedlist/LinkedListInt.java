@@ -23,6 +23,15 @@ public class LinkedListInt extends LinkedList {
 
 	}
 
+	public LinkedList copy() {
+		LinkedListInt linkedList = new LinkedListInt();
+
+		for (int i = 0; i < size(); i++) {
+			linkedList.add(get(i));
+		}
+
+		return linkedList;
+	}
 	public int[] getAll() {
 		int[] arr = new int[size()];
 		Node[] nodeArr = getArray();

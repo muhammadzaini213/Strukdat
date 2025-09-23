@@ -1,18 +1,18 @@
 package amerika.sorting.simplesorting;
 
-import amerika.linkedlists.onewaylinkedlist.LinkedList;
-import amerika.linkedlists.onewaylinkedlist.LinkedListBool;
-import amerika.linkedlists.onewaylinkedlist.LinkedListChar;
-import amerika.linkedlists.onewaylinkedlist.LinkedListFloat;
-import amerika.linkedlists.onewaylinkedlist.LinkedListInt;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedList;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListBool;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListChar;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListFloat;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListInt;
 
 public class BubbleSort {
 
-	public void sort(LinkedList linkedList, boolean asc) {
+	public void sort(TwoWayLinkedList linkedList, boolean asc) {
 		int n = linkedList.size();
 
-		if (linkedList instanceof LinkedListInt) {
-			LinkedListInt linkedListInt = (LinkedListInt) linkedList;
+		if (linkedList instanceof TwoWayLinkedListInt) {
+			TwoWayLinkedListInt linkedListInt = ((TwoWayLinkedListInt) linkedList);
 			for (int i = 0; i < n - 1; i++) {
 				for (int j = 0; j < n - i - 1; j++) {
 					if ((linkedListInt.get(j) > linkedListInt.get(j + 1) && asc) || (!asc && linkedListInt.get(j) < linkedListInt.get(j+1))) {
@@ -21,8 +21,8 @@ public class BubbleSort {
 
 				}
 			}
-		} else if (linkedList instanceof LinkedListChar) {
-			LinkedListChar linkedListChar = (LinkedListChar) linkedList;
+		} else if (linkedList instanceof TwoWayLinkedListChar) {
+			TwoWayLinkedListChar linkedListChar = ((TwoWayLinkedListChar) linkedList);
 			for (int i = 0; i < n - 1; i++) {
 				for (int j = 0; j < n - i - 1; j++) {
 					if ((linkedListChar.get(j) > linkedListChar.get(j + 1) && asc) || (!asc && linkedListChar.get(j) < linkedListChar.get(j+1))) {
@@ -30,8 +30,8 @@ public class BubbleSort {
 					}
 				}
 			}
-		} else if (linkedList instanceof LinkedListFloat) {
-			LinkedListFloat linkedListFloat = (LinkedListFloat) linkedList;
+		} else if (linkedList instanceof TwoWayLinkedListFloat) {
+			TwoWayLinkedListFloat linkedListFloat = ((TwoWayLinkedListFloat) linkedList);
 			for (int i = 0; i < n - 1; i++) {
 				for (int j = 0; j < n - i - 1; j++) {
 					if ((linkedListFloat.get(j) > linkedListFloat.get(j + 1) && asc) || (!asc && linkedListFloat.get(j) < linkedListFloat.get(j+1))) {
@@ -39,8 +39,8 @@ public class BubbleSort {
 					}
 				}
 			}
-		} else if (linkedList instanceof LinkedListBool) {
-			LinkedListBool linkedListBool = (LinkedListBool) linkedList;
+		} else if (linkedList instanceof TwoWayLinkedListBool) {
+			TwoWayLinkedListBool linkedListBool = ((TwoWayLinkedListBool) linkedList);
 			for (int i = 0; i < n - 1; i++) {
 				for (int j = 0; j < n - i - 1; j++) {
 					if ((asc && linkedListBool.get(j) && !linkedListBool.get(j + 1)) || (!asc && !linkedListBool.get(j) && linkedListBool.get(j + 1))) {

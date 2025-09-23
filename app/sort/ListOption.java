@@ -3,82 +3,82 @@ package app.sort;
 import java.util.Scanner;
 import java.util.Random;
 import java.util.Arrays;
-import amerika.linkedlists.onewaylinkedlist.LinkedList;
-import amerika.linkedlists.onewaylinkedlist.LinkedListInt;
-import amerika.linkedlists.onewaylinkedlist.LinkedListChar;
-import amerika.linkedlists.onewaylinkedlist.LinkedListFloat;
-import amerika.linkedlists.onewaylinkedlist.LinkedListBool;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedList;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListInt;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListChar;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListFloat;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListBool;
 
 public class ListOption {
 
-	public static void addLinkedListData(Scanner sc, LinkedList linkedList) {
+	public static void addLinkedListData(Scanner sc, TwoWayLinkedList linkedList) {
 		System.out.print("Masukkan data: ");
 
 		String input = sc.nextLine();
 
 		if (input.isEmpty()) return;
 
-		if (linkedList instanceof LinkedListInt) {
+		if (linkedList instanceof TwoWayLinkedListInt) {
 			try {
-				((LinkedListInt) linkedList).add(Integer.parseInt(input));
+				((TwoWayLinkedListInt) linkedList).add(Integer.parseInt(input));
 			} catch (NumberFormatException e){
 				System.out.println("Masukkan bilangan bulat!");
 			}
 		}
 		
-		else if (linkedList instanceof LinkedListFloat) {
+		else if (linkedList instanceof TwoWayLinkedListFloat) {
 			try {
-				((LinkedListFloat) linkedList).add(Float.parseFloat(input));
+				((TwoWayLinkedListFloat) linkedList).add(Float.parseFloat(input));
 			} catch (NumberFormatException e) {
 				System.out.println("Masukkan angka, jika pecahan gunakan titik ( . )!");
 			}
 		}
 
-		else if (linkedList instanceof LinkedListChar) {
-			((LinkedListChar) linkedList).add(input.charAt(0));
+		else if (linkedList instanceof TwoWayLinkedListChar) {
+			((TwoWayLinkedListChar) linkedList).add(input.charAt(0));
 		}
 
-		else if (linkedList instanceof LinkedListBool) {
-			if (input.toLowerCase().equals("true")) ((LinkedListBool) linkedList).add(true);
-			else if (input.toLowerCase().equals("false")) ((LinkedListBool) linkedList).add(false);
+		else if (linkedList instanceof TwoWayLinkedListBool) {
+			if (input.toLowerCase().equals("true")) ((TwoWayLinkedListBool) linkedList).add(true);
+			else if (input.toLowerCase().equals("false")) ((TwoWayLinkedListBool) linkedList).add(false);
 		}
 		System.out.println("Berhasil!");
 	}
 
-	public static void addTenData(LinkedList linkedList) {
+	public static void addTenData(TwoWayLinkedList linkedList) {
 		int[] intArr = {3, 1, 5, 2 , 10, 4, 7, 9, 8, 11};
 		float[] floatArr = {12.5f, 3.8f, 99.1f, 45.2f, 7.7f, 28.9f, 61.3f, 14.6f, 82.4f, 0.1f};
 		char[] charArr = {'a', 'z', 't', 'k', 'm', 'j', 'x', 'q', 'i', 'f'};
 		boolean[] boolArr = {true, false, true, true, false, false, true, false, true, false};
 
-		if (linkedList instanceof LinkedListInt) {
+		if (linkedList instanceof TwoWayLinkedListInt) {
 			for (int i = 0; i < intArr.length; i++) {
-				((LinkedListInt) linkedList).add(intArr[i]);
+				((TwoWayLinkedListInt) linkedList).add(intArr[i]);
 			}
 		}
 
-		else if (linkedList instanceof LinkedListFloat) {
+		else if (linkedList instanceof TwoWayLinkedListFloat) {
 			for (int i = 0; i < floatArr.length; i++) {
-				((LinkedListFloat) linkedList).add(floatArr[i]);
+				((TwoWayLinkedListFloat) linkedList).add(floatArr[i]);
 			}
 		}
 
-		else if (linkedList instanceof LinkedListChar) {
+		else if (linkedList instanceof TwoWayLinkedListChar) {
 			for (int i = 0; i < charArr.length; i++) {
-				((LinkedListChar) linkedList).add(charArr[i]);
+				((TwoWayLinkedListChar) linkedList).add(charArr[i]);
 			}
 		}
 
-		else if (linkedList instanceof LinkedListBool) {
+		else if (linkedList instanceof TwoWayLinkedListBool) {
 			for (int i = 0; i < boolArr.length; i++) {
-				((LinkedListBool) linkedList).add(boolArr[i]);
+				((TwoWayLinkedListBool) linkedList).add(boolArr[i]);
 			}
 		}
 		System.out.println("Berhasil!");
 	}
 
 
-	public static void addRandomData(Scanner sc, LinkedList linkedList, boolean showProcess) {
+	public static void addRandomData(Scanner sc, TwoWayLinkedList linkedList, boolean showProcess) {
 		Random r = new Random();
 		System.out.println("Masukkan jumlah data random: ");
 		int limit = 0;
@@ -89,33 +89,33 @@ public class ListOption {
 			return;
 		}
 
-		if (linkedList instanceof LinkedListInt) {
+		if (linkedList instanceof TwoWayLinkedListInt) {
 			for (int i = 0; i <= limit; i++) {
 				int data = r.nextInt(100000);
-				((LinkedListInt) linkedList).add(data);
+				((TwoWayLinkedListInt) linkedList).add(data);
 				if (showProcess) System.out.println("Iterasi ["+i+"/"+limit+"] dengan data: "+data);
 			}
 		}
 
-	else if (linkedList instanceof LinkedListFloat) {
+	else if (linkedList instanceof TwoWayLinkedListFloat) {
 			for (int i = 0; i <= limit; i++) {
 				float data = r.nextFloat() * 100000;
-				((LinkedListFloat) linkedList).add(data);
+				((TwoWayLinkedListFloat) linkedList).add(data);
 				if (showProcess) System.out.println("Iterasi ["+i+"/"+limit+"] dengan data: "+data);
 			}
 		}
-		else if (linkedList instanceof LinkedListChar) {
+		else if (linkedList instanceof TwoWayLinkedListChar) {
 			for (int i = 0; i <= limit; i++) {
 				char data = (char) ('A' + r.nextInt(26));
-				((LinkedListChar) linkedList).add(data);
+				((TwoWayLinkedListChar) linkedList).add(data);
 				if (showProcess) System.out.println("Iterasi ["+i+"/"+limit+"] dengan data: "+data);
 			}
 		}
 
-		else if (linkedList instanceof LinkedListBool) {
+		else if (linkedList instanceof TwoWayLinkedListBool) {
 			for (int i = 0; i <= limit; i++) {
 				boolean data = r.nextBoolean();
-				((LinkedListBool) linkedList).add(data);
+				((TwoWayLinkedListBool) linkedList).add(data);
 				if (showProcess) System.out.println("Iterasi ["+i+"/"+limit+"] dengan data: "+data);
 			}
 
@@ -126,7 +126,7 @@ public class ListOption {
 		System.out.println("Berhasil!");
 	}
 
-	public static void peekLinkedListData(Scanner sc, LinkedList linkedList) {
+	public static void peekLinkedListData(Scanner sc, TwoWayLinkedList linkedList) {
 		if (linkedList.size() == 0) {
 			System.out.println("linkedList kosong!");
 		}
@@ -150,25 +150,25 @@ public class ListOption {
 			return;
 		}
 
-		if (linkedList instanceof LinkedListInt) {
-			System.out.println("Index ke-" + index + " berisi: "+ ((LinkedListInt) linkedList).get(index));
+		if (linkedList instanceof TwoWayLinkedListInt) {
+			System.out.println("Index ke-" + index + " berisi: "+ ((TwoWayLinkedListInt) linkedList).get(index));
 		}
 		
-		else if (linkedList instanceof LinkedListFloat) {
-			System.out.println("Index ke-" + index + " berisi: "+ ((LinkedListFloat) linkedList).get(index));
+		else if (linkedList instanceof TwoWayLinkedListFloat) {
+			System.out.println("Index ke-" + index + " berisi: "+ ((TwoWayLinkedListFloat) linkedList).get(index));
 		}
 
-		else if (linkedList instanceof LinkedListChar) {
-			System.out.println("Index ke-" + index + " berisi: "+ ((LinkedListChar) linkedList).get(index));
+		else if (linkedList instanceof TwoWayLinkedListChar) {
+			System.out.println("Index ke-" + index + " berisi: "+ ((TwoWayLinkedListChar) linkedList).get(index));
 		}
 
-		else if (linkedList instanceof LinkedListBool) {
-			System.out.println("Index ke-" + index + " berisi: "+ ((LinkedListBool) linkedList).get(index));
+		else if (linkedList instanceof TwoWayLinkedListBool) {
+			System.out.println("Index ke-" + index + " berisi: "+ ((TwoWayLinkedListBool) linkedList).get(index));
 		}
 		System.out.println("Berhasil!");
 	}
 
-	public static void deleteIndex(Scanner sc, LinkedList linkedList) {
+	public static void deleteIndex(Scanner sc, TwoWayLinkedList linkedList) {
 		System.out.print("Masukkan index yang ingin dihapus (0-"+(linkedList.size()-1)+"): ");
 		int index = -1000;
 
@@ -190,7 +190,7 @@ public class ListOption {
 		System.out.println("Berhasil!");
 	}
 
-	public static void swapData(Scanner sc, LinkedList linkedList) {
+	public static void swapData(Scanner sc, TwoWayLinkedList linkedList) {
 		System.out.print("Masukkan index pertama yang ingin ditukar (0-"+(linkedList.size()-1)+"): ");
 		int index1 = -1000;
 
@@ -214,22 +214,22 @@ public class ListOption {
 		System.out.println("Berhasil!");
 	}
 
-	public static void getSize(LinkedList linkedList) {
-		System.out.println("Ukuran dari LinkedList adalah: " + linkedList.size());
+	public static void getSize(TwoWayLinkedList linkedList) {
+		System.out.println("Ukuran dari TwoWayLinkedList adalah: " + linkedList.size());
 	}
-	public static void getAll(LinkedList linkedList) {
+	public static void getAll(TwoWayLinkedList linkedList) {
 
-		if (linkedList instanceof LinkedListInt) {
-			System.out.println(Arrays.toString(((LinkedListInt) linkedList).getAll()));
+		if (linkedList instanceof TwoWayLinkedListInt) {
+			System.out.println(Arrays.toString(((TwoWayLinkedListInt) linkedList).getAll()));
 		}
-		else if (linkedList instanceof LinkedListFloat) {
-			System.out.println(Arrays.toString(((LinkedListFloat) linkedList).getAll()));
+		else if (linkedList instanceof TwoWayLinkedListFloat) {
+			System.out.println(Arrays.toString(((TwoWayLinkedListFloat) linkedList).getAll()));
 		}
-		else if (linkedList instanceof LinkedListChar) {
-			System.out.println(Arrays.toString(((LinkedListChar) linkedList).getAll()));
+		else if (linkedList instanceof TwoWayLinkedListChar) {
+			System.out.println(Arrays.toString(((TwoWayLinkedListChar) linkedList).getAll()));
 		}
-		else if (linkedList instanceof LinkedListBool) {
-			System.out.println(Arrays.toString(((LinkedListBool) linkedList).getAll()));
+		else if (linkedList instanceof TwoWayLinkedListBool) {
+			System.out.println(Arrays.toString(((TwoWayLinkedListBool) linkedList).getAll()));
 		}
 	}
 }

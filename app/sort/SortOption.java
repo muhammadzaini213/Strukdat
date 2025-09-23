@@ -5,59 +5,75 @@ import app.sort.ListOption;
 import java.util.Scanner;
 import java.util.Arrays;
 import amerika.sorting.simplesorting.SimpleSorting;
-import amerika.linkedlists.onewaylinkedlist.LinkedList;
-import amerika.linkedlists.onewaylinkedlist.LinkedListInt;
-import amerika.linkedlists.onewaylinkedlist.LinkedListFloat;
-import amerika.linkedlists.onewaylinkedlist.LinkedListChar;
-import amerika.linkedlists.onewaylinkedlist.LinkedListBool;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedList;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListInt;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListFloat;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListChar;
+import amerika.linkedlists.twowaylinkedlist.TwoWayLinkedListBool;
 
 public class SortOption {
 
 	SimpleSorting sort = new SimpleSorting();
 
-	public void sortAll(LinkedList linkedList, boolean asc, boolean showResult) {
-		LinkedList tempList1 = linkedList;
-		LinkedList tempList2 = linkedList;
-		LinkedList tempList3 = linkedList;
-		bubbleSort(tempList1, asc, showResult);
+	public void sortAll(TwoWayLinkedList linkedList, boolean asc, boolean showResult) {
+		TwoWayLinkedList tempList1 = copy(linkedList);
+		TwoWayLinkedList tempList2 = copy(linkedList);
+		TwoWayLinkedList tempList3 = copy(linkedList);
+		insertionSort(tempList1, asc, showResult);
 
 		System.out.println("=" .repeat(10));
 
-		insertionSort(tempList2, asc, showResult);
+		selectionSort(tempList2, asc, showResult);
 
 		System.out.println("=" .repeat(10));
 
-		insertionSort(tempList3, asc, showResult);
+		bubbleSort(tempList3, asc, showResult);
 
 		System.out.println("=".repeat(10));
 	}
 
+	public TwoWayLinkedList copy(TwoWayLinkedList linkedList) {
+		if (linkedList instanceof TwoWayLinkedListInt) {
+			return ((TwoWayLinkedListInt) linkedList).copy();
+		}
+		if (linkedList instanceof TwoWayLinkedListFloat) {
+			return ((TwoWayLinkedListFloat) linkedList).copy();
+		}
+		if (linkedList instanceof TwoWayLinkedListChar) {
+			return ((TwoWayLinkedListChar) linkedList).copy();
+		}
+		if (linkedList instanceof TwoWayLinkedListBool) {
+			return ((TwoWayLinkedListBool) linkedList).copy();
+		}
+		System.out.println(false);
+		return linkedList;
+	}
 
-	public void bubbleSort(LinkedList linkedList, boolean asc, boolean showResult) {
-		LinkedList tempList1 = linkedList;
+	public void bubbleSort(TwoWayLinkedList linkedList, boolean asc, boolean showResult) {
+		TwoWayLinkedList tempList1 = copy(linkedList);
 		long start1 = System.currentTimeMillis();
 		sort.bubbleSort(tempList1, asc);
 		long end1 = System.currentTimeMillis();
-		System.out.println("Berhasil dalam " + (end1 - start1) + "ms");
+		System.out.println("BubbleSort Berhasil dalam " + (end1 - start1) + "ms");
 		if (showResult) ListOption.getAll(tempList1);
 	}
 
 
-	public void insertionSort(LinkedList linkedList, boolean asc, boolean showResult) {
-		LinkedList tempList2 = linkedList;
+	public void insertionSort(TwoWayLinkedList linkedList, boolean asc, boolean showResult) {
+		TwoWayLinkedList tempList2 = copy(linkedList);
 		long start2 = System.currentTimeMillis();
 		sort.insertionSort(tempList2, asc);
 		long end2 = System.currentTimeMillis();
-		System.out.println("Berhasil dalam " + (end2 - start2) + "ms");
+		System.out.println("InsertionSort Berhasil dalam " + (end2 - start2) + "ms");
 		if (showResult) ListOption.getAll(tempList2);
 	}
 
-	public void selectionSort(LinkedList linkedList, boolean asc, boolean showResult) {
-		LinkedList tempList3 = linkedList;
+	public void selectionSort(TwoWayLinkedList linkedList, boolean asc, boolean showResult) {
+		TwoWayLinkedList tempList3 = copy(linkedList);
 		long start3 = System.currentTimeMillis();
 		sort.insertionSort(tempList3, asc);
 		long end3 = System.currentTimeMillis();
-		System.out.println("Berhasil dalam " + (end3 - start3) + "ms");
+		System.out.println("SelectionSort Berhasil dalam " + (end3 - start3) + "ms");
 		if (showResult) ListOption.getAll(tempList3);
 	}
 

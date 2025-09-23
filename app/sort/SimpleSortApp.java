@@ -2,7 +2,7 @@ package app.sort;
 
 import java.util.Scanner;
 import java.util.Arrays;
-import amerika.linkedlists.onewaylinkedlist.*;
+import amerika.linkedlists.twowaylinkedlist.*;
 import amerika.sorting.simplesorting.SimpleSorting;
 import app.sort.ListOption;
 import app.sort.ArrayOption;
@@ -24,7 +24,7 @@ public class SimpleSortApp {
 	boolean showProcess = false;
 	boolean showResult = false;
 
-	LinkedList linkedlist = new LinkedListInt();
+	TwoWayLinkedList linkedlist = new TwoWayLinkedListInt();
 	int[] intArr = new int[0];
 	float[] floatArr = new float[0];
 	char[] charArr = new char[0];
@@ -86,7 +86,7 @@ public class SimpleSortApp {
 				case -1:
 					break;
 				case 1:
-					if (listType == "LinkedList") ListOption.addLinkedListData(sc, linkedlist);
+					if (listType == "TwoWayLinkedList") ListOption.addLinkedListData(sc, linkedlist);
 					if (listType == "Array") {
 						if (dataType == "int") intArr = (int[]) arrOption.inputData(sc, intArr, dataType);
 						if (dataType == "float") floatArr = (float[]) arrOption.inputData(sc, floatArr, dataType);
@@ -98,7 +98,7 @@ public class SimpleSortApp {
 					}
 					break;
 				case 2:
-					if (listType == "LinkedList") ListOption.addTenData(linkedlist);
+					if (listType == "TwoWayLinkedList") ListOption.addTenData(linkedlist);
 					if (listType == "Array") {
 						if (dataType == "int") intArr = (int[]) arrOption.addTenData(dataType);
 						if (dataType == "float") floatArr = (float[]) arrOption.addTenData(dataType);
@@ -109,7 +109,7 @@ public class SimpleSortApp {
 
 					break;
 				case 3:
-					if (listType == "LinkedList") ListOption.addRandomData(sc, linkedlist, showProcess);
+					if (listType == "TwoWayLinkedList") ListOption.addRandomData(sc, linkedlist, showProcess);
 					if (listType == "Array") {
 						if (dataType == "int") intArr = (int[]) arrOption.addRandomData(sc, intArr, dataType, showProcess);
 						if (dataType == "float") floatArr = (float[]) arrOption.addRandomData(sc, floatArr, dataType, showProcess);
@@ -120,22 +120,22 @@ public class SimpleSortApp {
 
 					break;
 				case 4:
-					if (listType == "LinkedList") ListOption.peekLinkedListData(sc, linkedlist);
+					if (listType == "TwoWayLinkedList") ListOption.peekLinkedListData(sc, linkedlist);
 					break;
 				case 5:
-					if (listType == "LinkedList") ListOption.deleteIndex(sc, linkedlist);
+					if (listType == "TwoWayLinkedList") ListOption.deleteIndex(sc, linkedlist);
 					break;
 				case 6:
-					if (listType == "LinkedList") ListOption.swapData(sc, linkedlist);
+					if (listType == "TwoWayLinkedList") ListOption.swapData(sc, linkedlist);
 					break;
 				case 7:
 					sortOption();
 					break;
 				case 8:
-					if (listType == "LinkedList") ListOption.getSize(linkedlist);
+					if (listType == "TwoWayLinkedList") ListOption.getSize(linkedlist);
 					break;
 				case 9:
-					if (listType == "LinkedList") ListOption.getAll(linkedlist);
+					if (listType == "TwoWayLinkedList") ListOption.getAll(linkedlist);
 					if (listType == "Array") {
 						if (dataType == "int") o.print(Arrays.toString(intArr));
 						if (dataType == "float") o.print(Arrays.toString(floatArr));
@@ -173,7 +173,7 @@ public class SimpleSortApp {
 				case -1:
 					break;
 				case 1:
-					if (listType == "LinkedList") sortOption.sortAll(linkedlist, isAscend, showResult);
+					if (listType == "TwoWayLinkedList") sortOption.sortAll(linkedlist, isAscend, showResult);
 					if (listType == "Array") {
 						if (dataType == "int") sortOption.sortAll(intArr, isAscend, showResult);
 						if (dataType == "float") sortOption.sortAll(floatArr, isAscend, showResult);
@@ -183,7 +183,7 @@ public class SimpleSortApp {
 					
 					break;	
 				case 2:
-					if (listType == "LinkedList") sortOption.bubbleSort(linkedlist, isAscend, showResult);
+					if (listType == "TwoWayLinkedList") sortOption.bubbleSort(linkedlist, isAscend, showResult);
 	if (listType == "Array") {
 						if (dataType == "int") sortOption.bubbleSort(intArr, isAscend, showResult);
 						if (dataType == "float") sortOption.bubbleSort(floatArr, isAscend, showResult);
@@ -193,7 +193,7 @@ public class SimpleSortApp {
 					
 					break;
 				case 3:
-					if (listType == "LinkedList") sortOption.insertionSort(linkedlist, isAscend, showResult);
+					if (listType == "TwoWayLinkedList") sortOption.insertionSort(linkedlist, isAscend, showResult);
 	if (listType == "Array") {
 						if (dataType == "int") sortOption.insertionSort(intArr, isAscend, showResult);
 						if (dataType == "float") sortOption.insertionSort(floatArr, isAscend, showResult);
@@ -203,7 +203,7 @@ public class SimpleSortApp {
 					
 					break;
 				case 4:
-					if (listType == "LinkedList") sortOption.selectionSort(linkedlist, isAscend, showResult);
+					if (listType == "TwoWayLinkedList") sortOption.selectionSort(linkedlist, isAscend, showResult);
 	if (listType == "Array") {
 						if (dataType == "int") sortOption.selectionSort(intArr, isAscend, showResult);
 						if (dataType == "float") sortOption.selectionSort(floatArr, isAscend, showResult);
@@ -232,7 +232,7 @@ public class SimpleSortApp {
 		while(true) {
 			o.print("");
 			o.print("==== Pengaturan Tipe Data ====");
-			o.print("1. Tipe List (Array/LinkedList)");
+			o.print("1. Tipe List (Array/TwoWayLinkedList)");
 			o.print("2. Tipe data (int/char/float/bool)");
 			o.print("0. Kembali");
 			o.placeholder("Masukkan opsi (0-2): ");
@@ -259,7 +259,7 @@ public class SimpleSortApp {
 			o.print("");
 			o.print("==== Ubah Tipe List ====");
 			o.print("1. Array");
-			o.print("2. LinkedList");
+			o.print("2. TwoWayLinkedList");
 			o.print("0. Kembali");
 			o.placeholder("Masukkan opsi (0-2): ");
 
@@ -270,7 +270,7 @@ public class SimpleSortApp {
 					if (i.confirmation()) listType = "Array";
 					break;
 				case 2:
-					if (i.confirmation()) listType = "LinkedList";
+					if (i.confirmation()) listType = "TwoWayLinkedList";
 					break;
 				case 0:
 					return;
@@ -299,7 +299,7 @@ public class SimpleSortApp {
 					if (i.confirmation()) {
 						if (dataType == "int") continue;
 						dataType = "int";
-						linkedlist = new LinkedListInt();
+						linkedlist = new TwoWayLinkedListInt();
 						intArr = new int[0];
 					}
 					break;
@@ -307,7 +307,7 @@ public class SimpleSortApp {
 					if (i.confirmation()) {
 						if (dataType == "float") continue;
 						dataType = "float";
-						linkedlist = new LinkedListFloat();
+						linkedlist = new TwoWayLinkedListFloat();
 						floatArr = new float[0];
 					}
 
@@ -316,7 +316,7 @@ public class SimpleSortApp {
 					if (i.confirmation()) {
 						if (dataType == "char") continue;
 						dataType = "char";
-						linkedlist = new LinkedListChar();
+						linkedlist = new TwoWayLinkedListChar();
 						charArr = new char[0];
 					}
 
@@ -325,7 +325,7 @@ public class SimpleSortApp {
 					if (i.confirmation()) {
 						if (dataType == "bool") continue;
 						dataType = "bool";
-						linkedlist = new LinkedListBool();
+						linkedlist = new TwoWayLinkedListBool();
 						booleanArr = new boolean[0];
 					}
 

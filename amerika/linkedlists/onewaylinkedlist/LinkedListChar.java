@@ -21,6 +21,16 @@ public class LinkedListChar extends LinkedList {
 
 	}
 
+
+	public LinkedList copy() {
+		LinkedListChar linkedList = new LinkedListChar();
+
+		for (int i = 0; i < size(); i++) {
+			linkedList.add(get(i));
+		}
+
+		return linkedList;
+	}
 	public char[] getAll() {
 		char[] arr = new char[size()];
 		Node[] nodeArr = (Node[]) getArray();

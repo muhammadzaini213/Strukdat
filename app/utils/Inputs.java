@@ -24,19 +24,20 @@ public class Inputs {
 		System.out.print("Apakah anda yakin? Semua data yang dimasukkan sebelumnya akan hilang!(Y/n)");
 
 		String input = sc.nextLine().toLowerCase();
-        if (input.isEmpty()) return true;
-        return input.charAt(0) == 'y';
-    }
+		if (input.isEmpty()) return true;
+		return input.charAt(0) == 'y';
+	}
 
 	public int switchOption() {
-		while(true) {
 			System.out.print("Aktifkan(Y), Matikan(n), Batalkan(e): ");
 
-			char input = sc.nextLine().toLowerCase().charAt(0);
+			String input = sc.nextLine();
+			if (input.isEmpty()) return 1;
+			
+			char inputChar = input.toLowerCase().charAt(0);
 
-			if (input == 'y') return 1;
-			else if (input == 'n') return 0;
+			if (inputChar == 'y') return 1;
+			if (inputChar == 'n') return 0;
 			else return -1;
-		}
 	}
 }
