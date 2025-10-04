@@ -1,0 +1,11 @@
+### Compiler
+javac -d build $(find amerika app -name "*.java")
+
+### Runner
+java -cp build app.xxxxx.Main
+
+### Linux Permission
+chmod +x run.sh
+
+### run linux
+./run.sh
