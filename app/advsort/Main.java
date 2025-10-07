@@ -25,12 +25,15 @@ public class Main {
         System.out.print("Masukkan jumlah data yang ingin di-generate: ");
         int size = scanner.nextInt();
         
+        System.out.print("Masukkan nilai minimum untuk random data (contoh: 1000): ");
+        int minValue = scanner.nextInt();
+        
         System.out.print("Masukkan nilai maksimal untuk random data (contoh: 1000): ");
         int maxValue = scanner.nextInt();
         
         System.out.println();
         System.out.println("Generating " + size + " random data...");
-        int[] originalData = generateRandomData(size, maxValue);
+        int[] originalData = generateRandomData(size, minValue, maxValue);
         System.out.println("Data berhasil di-generate!");
         
         if (size <= 20) {
@@ -111,16 +114,16 @@ public class Main {
         scanner.close();
     }
     
-    private int[] generateRandomData(int size, int maxValue) {
-        Random random = new Random();
-        int[] data = new int[size];
-        
-        for (int i = 0; i < size; i++) {
-            data[i] = random.nextInt(maxValue + 1);
-        }
-        
-        return data;
+    private int[] generateRandomData(int size, int minValue, int maxValue) {
+    Random random = new Random();
+    int[] data = new int[size];
+
+    for (int i = 0; i < size; i++) {
+        data[i] = random.nextInt(maxValue - minValue + 1) + minValue;
     }
+
+    return data;
+}
     
     private static class SortingResult implements Comparable<SortingResult> {
         String name;
