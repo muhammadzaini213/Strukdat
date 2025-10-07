@@ -2,7 +2,7 @@ package amerika.sorting.advancesorting;
 
 public class ShellSort {
     
-    public static void sort(int[] arr) {
+    public static void shellSort(int[] arr) {
         int n = arr.length;
         
         for (int gap = n/2; gap > 0; gap /= 2) {
