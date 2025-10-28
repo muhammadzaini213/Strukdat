@@ -29,7 +29,7 @@ public class BinaryTreeCLI {
             }
         }
 
-        System.out.println("\nThank you for using Binary Tree CLI!");
+        System.out.println("\nBye.");
         scanner.close();
     }
 
@@ -195,10 +195,10 @@ public class BinaryTreeCLI {
     }
 
     private static void displayAllTraversals() {
-//        if (currentTree.getSize() == 0) {
-//            System.out.println("Tree is empty!");
-//            return;
-//        }
+        if (currentTree.getSize() == 0) {
+            System.out.println("Tree is empty!");
+            return;
+        }
 
         System.out.println("\n--- All Traversals ---");
         System.out.print("Pre-Order:  ");
