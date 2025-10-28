@@ -15,6 +15,7 @@ public class TwoWayBinaryTree extends BinaryTree {
     public boolean add(char key) {
         if (root == null) {
             root = new TwoWayBinaryTreeNode(key);
+            size++;
             return true;
         }
         return insert(root, key);
@@ -28,6 +29,7 @@ public class TwoWayBinaryTree extends BinaryTree {
                 TwoWayBinaryTreeNode newNode = new TwoWayBinaryTreeNode(key);
                 root.setLeft(newNode);
                 newNode.setParent((TwoWayBinaryTreeNode) root);
+                size++;
                 return true;
             }
             return insert((TwoWayBinaryTreeNode) root.getLeft(), key);
@@ -36,6 +38,7 @@ public class TwoWayBinaryTree extends BinaryTree {
                 TwoWayBinaryTreeNode newNode = new TwoWayBinaryTreeNode(key);
                 root.setRight(newNode);
                 newNode.setParent((TwoWayBinaryTreeNode) root);
+                size++;
                 return true;
             }
             return insert((TwoWayBinaryTreeNode) root.getRight(), key);
@@ -48,6 +51,7 @@ public class TwoWayBinaryTree extends BinaryTree {
         if (node == null) return false;
 
         delete(node);
+        size--;
         return true;
     }
 
