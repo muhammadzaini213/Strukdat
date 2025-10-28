@@ -5,7 +5,7 @@ import amerika.nodes.bitreenode.BinaryTreeNode;
 public class BinaryTree {
     
     protected BinaryTreeNode root;
-    int size = 0;
+    protected int size = 0;
 
     public boolean add(char key) {
         if (root == null) {

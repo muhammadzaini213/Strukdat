@@ -36,7 +36,7 @@ public class Main {
         System.out.println("\nTWO WAY BST\n");
         TwoWayBinaryTree tree = new TwoWayBinaryTree();
         Random random = new Random();
-        for(int i = 0; i < 11; i++) {
+        while (tree.getSize() < 11) {
             tree.add((char) ('A' + random.nextInt(26)));
         }
 
