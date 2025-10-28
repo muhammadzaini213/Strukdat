@@ -2,83 +2,76 @@ package app.binarysearchtree;
 
 import amerika.binarytrees.onewaybinarytree.BinaryTree;
 import amerika.binarytrees.twowaybinarytree.TwoWayBinaryTree;
-
 import java.util.Scanner;
 
 public class BinaryTreeCLI {
-
     private static Scanner scanner = new Scanner(System.in);
     private static BinaryTree currentTree = null;
     private static String currentTreeType = null;
 
     public static void main(String[] args) {
         System.out.println("===================================");
-        System.out.println("  Binary Tree Interactive CLI");
+        System.out.println(" CLI Binary Tree");
         System.out.println("===================================");
-
         while (true) {
             if (currentTree == null) {
                 selectTreeType();
             } else {
                 showMenu();
                 int choice = getIntInput();
-
                 if (!handleMenuChoice(choice)) {
                     break;
                 }
             }
         }
-
-        System.out.println("\nBye.");
+        System.out.println("\nSampai jumpa.");
         scanner.close();
     }
 
     private static void selectTreeType() {
-        System.out.println("\nSelect Binary Tree Type:");
-        System.out.println("1. One-Way Binary Tree");
-        System.out.println("2. Two-Way Binary Tree (with parent references)");
-        System.out.println("0. Exit");
-        System.out.print("Enter your choice: ");
-
+        System.out.println("\nPilih Jenis Binary Tree:");
+        System.out.println("1. Binary Tree Satu Arah");
+        System.out.println("2. Binary Tree Dua Arah (dengan referensi parent)");
+        System.out.println("0. Keluar");
+        System.out.print("Masukkan pilihan Anda: ");
         int choice = getIntInput();
-
         switch (choice) {
             case 1:
                 currentTree = new BinaryTree();
-                currentTreeType = "One-Way Binary Tree";
-                System.out.println("\n" + currentTreeType + " created successfully!");
+                currentTreeType = "Binary Tree Satu Arah";
+                System.out.println("\n" + currentTreeType + " berhasil dibuat!");
                 break;
             case 2:
                 currentTree = new TwoWayBinaryTree();
-                currentTreeType = "Two-Way Binary Tree";
-                System.out.println("\n" + currentTreeType + " created successfully!");
+                currentTreeType = "Binary Tree Dua Arah";
+                System.out.println("\n" + currentTreeType + " berhasil dibuat!");
                 break;
             case 0:
-                System.out.println("\nExiting...");
+                System.out.println("\nKeluar...");
                 System.exit(0);
                 break;
             default:
-                System.out.println("Invalid choice! Please try again.");
+                System.out.println("Pilihan tidak valid! Silakan coba lagi.");
         }
     }
 
     private static void showMenu() {
         System.out.println("\n===================================");
-        System.out.println("  Current Tree: " + currentTreeType);
-        System.out.println("  Size: " + currentTree.getSize());
+        System.out.println(" Tree Saat Ini: " + currentTreeType);
+        System.out.println(" Ukuran: " + currentTree.getSize());
         System.out.println("===================================");
-        System.out.println("1.  Add element");
-        System.out.println("2.  Remove element");
-        System.out.println("3.  Display Pre-Order traversal");
-        System.out.println("4.  Display In-Order traversal");
-        System.out.println("5.  Display Post-Order traversal");
-        System.out.println("6.  Display all traversals");
-        System.out.println("7.  Add multiple elements");
-        System.out.println("8.  Remove multiple elements");
-        System.out.println("9.  Clear tree (switch tree type)");
-        System.out.println("10. Show tree information");
-        System.out.println("0.  Exit");
-        System.out.print("Enter your choice: ");
+        System.out.println("1. Tambah elemen");
+        System.out.println("2. Hapus elemen");
+        System.out.println("3. Tampilkan traversal Pre-Order");
+        System.out.println("4. Tampilkan traversal In-Order");
+        System.out.println("5. Tampilkan traversal Post-Order");
+        System.out.println("6. Tampilkan semua traversal");
+        System.out.println("7. Tambah beberapa elemen");
+        System.out.println("8. Hapus beberapa elemen");
+        System.out.println("9. Bersihkan Tree (ganti jenis Tree)");
+        System.out.println("10. Tampilkan informasi Tree");
+        System.out.println("0. Keluar");
+        System.out.print("Masukkan pilihan Anda: ");
     }
 
     private static boolean handleMenuChoice(int choice) {
@@ -116,181 +109,157 @@ public class BinaryTreeCLI {
             case 0:
                 return false;
             default:
-                System.out.println("Invalid choice! Please try again.");
+                System.out.println("Pilihan tidak valid! Silakan coba lagi.");
         }
         return true;
     }
 
     private static void addElement() {
-        System.out.print("Enter a character to add: ");
+        System.out.print("Masukkan karakter untuk ditambahkan: ");
         String input = scanner.nextLine().trim();
-
         if (input.isEmpty()) {
-            System.out.println("Error: Input cannot be empty!");
+            System.out.println("Kesalahan: Input tidak boleh kosong!");
             return;
         }
-
         char key = input.charAt(0);
         boolean success = currentTree.add(key);
-
         if (success) {
-            System.out.println("Successfully added '" + key + "' to the tree.");
+            System.out.println("Berhasil menambahkan '" + key + "' ke Tree.");
         } else {
-            System.out.println("Failed to add '" + key + "' (duplicate value).");
+            System.out.println("Gagal menambahkan '" + key + "' (nilai duplikat).");
         }
     }
 
     private static void removeElement() {
         if (currentTree.getSize() == 0) {
-            System.out.println("Tree is empty! Nothing to remove.");
+            System.out.println("Tree kosong! Tidak ada yang bisa dihapus.");
             return;
         }
-
-        System.out.print("Enter a character to remove: ");
+        System.out.print("Masukkan karakter untuk dihapus: ");
         String input = scanner.nextLine().trim();
-
         if (input.isEmpty()) {
-            System.out.println("Error: Input cannot be empty!");
+            System.out.println("Kesalahan: Input tidak boleh kosong!");
             return;
         }
-
         char key = input.charAt(0);
         boolean success = currentTree.remove(key);
-
         if (success) {
-            System.out.println("Successfully removed '" + key + "' from the tree.");
+            System.out.println("Berhasil menghapus '" + key + "' dari Tree.");
         } else {
-            System.out.println("Failed to remove '" + key + "' (not found in tree).");
+            System.out.println("Gagal menghapus '" + key + "' (tidak ditemukan di Tree).");
         }
     }
 
     private static void displayPreOrder() {
         if (currentTree.getSize() == 0) {
-            System.out.println("Tree is empty!");
+            System.out.println("Tree kosong!");
             return;
         }
-
-        System.out.print("Pre-Order Traversal: ");
+        System.out.print("Traversal Pre-Order: ");
         currentTree.preOrder();
     }
 
     private static void displayInOrder() {
         if (currentTree.getSize() == 0) {
-            System.out.println("Tree is empty!");
+            System.out.println("Tree kosong!");
             return;
         }
-
-        System.out.print("In-Order Traversal:  ");
+        System.out.print("Traversal In-Order: ");
         currentTree.inOrder();
     }
 
     private static void displayPostOrder() {
         if (currentTree.getSize() == 0) {
-            System.out.println("Tree is empty!");
+            System.out.println("Tree kosong!");
             return;
         }
-
-        System.out.print("Post-Order Traversal: ");
+        System.out.print("Traversal Post-Order: ");
         currentTree.postOrder();
     }
 
     private static void displayAllTraversals() {
         if (currentTree.getSize() == 0) {
-            System.out.println("Tree is empty!");
+            System.out.println("Tree kosong!");
             return;
         }
-
-        System.out.println("\n--- All Traversals ---");
-        System.out.print("Pre-Order:  ");
+        System.out.println("\n--- Semua Traversal ---");
+        System.out.print("Pre-Order: ");
         currentTree.preOrder();
-        System.out.print("In-Order:   ");
+        System.out.print("In-Order: ");
         currentTree.inOrder();
         System.out.print("Post-Order: ");
         currentTree.postOrder();
     }
 
     private static void addMultipleElements() {
-        System.out.print("Enter characters to add (e.g., 'ABCDEF' or 'A B C D E F'): ");
+        System.out.print("Masukkan karakter untuk ditambahkan (contoh: 'ABCDEF' atau 'A B C D E F'): ");
         String input = scanner.nextLine().trim();
-
         if (input.isEmpty()) {
-            System.out.println("Error: Input cannot be empty!");
+            System.out.println("Kesalahan: Input tidak boleh kosong!");
             return;
         }
-
         int addedCount = 0;
         int duplicateCount = 0;
-
         for (char c : input.toCharArray()) {
             if (c == ' ') continue;
-
             if (currentTree.add(c)) {
                 addedCount++;
             } else {
                 duplicateCount++;
             }
         }
-
-        System.out.println("Added " + addedCount + " element(s).");
+        System.out.println("Menambahkan " + addedCount + " elemen.");
         if (duplicateCount > 0) {
-            System.out.println("Skipped " + duplicateCount + " duplicate(s).");
+            System.out.println("Melewatkan " + duplicateCount + " duplikat.");
         }
     }
 
     private static void removeMultipleElements() {
         if (currentTree.getSize() == 0) {
-            System.out.println("Tree is empty! Nothing to remove.");
+            System.out.println("Tree kosong! Tidak ada yang bisa dihapus.");
             return;
         }
-
-        System.out.print("Enter characters to remove (e.g., 'ABC' or 'A B C'): ");
+        System.out.print("Masukkan karakter untuk dihapus (contoh: 'ABC' atau 'A B C'): ");
         String input = scanner.nextLine().trim();
-
         if (input.isEmpty()) {
-            System.out.println("Error: Input cannot be empty!");
+            System.out.println("Kesalahan: Input tidak boleh kosong!");
             return;
         }
-
         int removedCount = 0;
         int notFoundCount = 0;
-
         for (char c : input.toCharArray()) {
             if (c == ' ') continue;
-
             if (currentTree.remove(c)) {
                 removedCount++;
             } else {
                 notFoundCount++;
             }
         }
-
-        System.out.println("Removed " + removedCount + " element(s).");
+        System.out.println("Menghapus " + removedCount + " elemen.");
         if (notFoundCount > 0) {
-            System.out.println("Could not find " + notFoundCount + " element(s).");
+            System.out.println("Tidak menemukan " + notFoundCount + " elemen.");
         }
     }
 
     private static void clearTree() {
-        System.out.print("Are you sure you want to clear the tree and select a new type? (y/n): ");
+        System.out.print("Apakah Anda yakin ingin membersihkan Tree dan memilih jenis Tree baru? (y/n): ");
         String confirm = scanner.nextLine().trim().toLowerCase();
-
         if (confirm.equals("y") || confirm.equals("yes")) {
             currentTree = null;
             currentTreeType = null;
-            System.out.println("Tree cleared!");
+            System.out.println("Tree dibersihkan!");
         } else {
-            System.out.println("Operation cancelled.");
+            System.out.println("Operasi dibatalkan.");
         }
     }
 
     private static void showTreeInfo() {
-        System.out.println("\n--- Tree Information ---");
-        System.out.println("Tree Type: " + currentTreeType);
-        System.out.println("Size: " + currentTree.getSize());
-        System.out.println("Empty: " + (currentTree.getSize() == 0 ? "Yes" : "No"));
-
+        System.out.println("\n--- Informasi Tree ---");
+        System.out.println("Jenis Tree: " + currentTreeType);
+        System.out.println("Ukuran: " + currentTree.getSize());
+        System.out.println("Kosong: " + (currentTree.getSize() == 0 ? "Ya" : "Tidak"));
         if (currentTree.getSize() > 0) {
-            System.out.println("\nCurrent elements (In-Order): ");
+            System.out.println("\nElemen saat ini (In-Order): ");
             currentTree.inOrder();
         }
     }
@@ -301,7 +270,7 @@ public class BinaryTreeCLI {
                 String input = scanner.nextLine().trim();
                 return Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.print("Invalid input! Please enter a number: ");
+                System.out.print("Input tidak valid! Silakan masukkan angka: ");
             }
         }
     }
