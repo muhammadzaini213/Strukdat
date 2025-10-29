@@ -2,12 +2,18 @@ package app.binarysearchtree;
 
 import amerika.binarytrees.onewaybinarytree.BinaryTree;
 import amerika.binarytrees.twowaybinarytree.TwoWayBinaryTree;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class BinaryTreeCLI {
     private static Scanner scanner = new Scanner(System.in);
     private static BinaryTree currentTree = null;
     private static String currentTreeType = null;
+    private static List<Character> insertionHistory = new ArrayList<>();
 
     public static void main(String[] args) {
         System.out.println("===================================");
@@ -60,59 +66,84 @@ public class BinaryTreeCLI {
         System.out.println(" Tree Saat Ini: " + currentTreeType);
         System.out.println(" Ukuran: " + currentTree.getSize());
         System.out.println("===================================");
-        System.out.println("1. Tambah elemen");
-        System.out.println("2. Hapus elemen");
-        System.out.println("3. Tampilkan traversal Pre-Order");
-        System.out.println("4. Tampilkan traversal In-Order");
-        System.out.println("5. Tampilkan traversal Post-Order");
-        System.out.println("6. Tampilkan semua traversal");
-        System.out.println("7. Tambah beberapa elemen");
-        System.out.println("8. Hapus beberapa elemen");
-        System.out.println("9. Bersihkan Tree (ganti jenis Tree)");
-        System.out.println("10. Tampilkan informasi Tree");
-        System.out.println("0. Keluar");
+        // System.out.println("1. Tambah elemen");
+        // System.out.println("2. Hapus elemen");
+        // System.out.println("3. Tampilkan traversal Pre-Order");
+        // System.out.println("4. Tampilkan traversal In-Order");
+        // System.out.println("5. Tampilkan traversal Post-Order");
+        System.out.println("1. Tampilkan semua traversal");
+        System.out.println("2. Tambah beberapa elemen");
+        System.out.println("3. Tambah elemen acak");
+        // System.out.println("9. Hapus beberapa elemen");
+        // System.out.println("4. Bersihkan Tree (ganti jenis Tree)");
+        System.out.println("4. Tampilkan informasi Tree");
+        // System.out.println("0. Keluar");
+
         System.out.print("Masukkan pilihan Anda: ");
     }
 
-    private static boolean handleMenuChoice(int choice) {
+        private static boolean handleMenuChoice(int choice) {
         switch (choice) {
             case 1:
-                addElement();
-                break;
-            case 2:
-                removeElement();
-                break;
-            case 3:
-                displayPreOrder();
-                break;
-            case 4:
-                displayInOrder();
-                break;
-            case 5:
-                displayPostOrder();
-                break;
-            case 6:
                 displayAllTraversals();
                 break;
-            case 7:
+            case 2:
                 addMultipleElements();
                 break;
-            case 8:
-                removeMultipleElements();
+            case 3:
+                addRandomElements();
                 break;
-            case 9:
-                clearTree();
-                break;
-            case 10:
+            case 4:
                 showTreeInfo();
                 break;
-            case 0:
-                return false;
             default:
                 System.out.println("Pilihan tidak valid! Silakan coba lagi.");
         }
         return true;
     }
+
+    // private static boolean handleMenuChoice(int choice) {
+    //     switch (choice) {
+    //         case 1:
+    //             addElement();
+    //             break;
+    //         case 2:
+    //             removeElement();
+    //             break;
+    //         case 3:
+    //             displayPreOrder();
+    //             break;
+    //         case 4:
+    //             displayInOrder();
+    //             break;
+    //         case 5:
+    //             displayPostOrder();
+    //             break;
+    //         case 6:
+    //             displayAllTraversals();
+    //             break;
+    //         case 7:
+    //             addMultipleElements();
+    //             break;
+    //         case 8:
+    //             addRandomElements();
+    //             break;
+    //         case 9:
+    //             removeMultipleElements();
+    //             break;
+    //         case 10:
+    //             clearTree();
+    //             break;
+    //         case 11:
+    //             showTreeInfo();
+    //             break;
+    //         case 0:
+    //             return false;
+    //         default:
+    //             System.out.println("Pilihan tidak valid! Silakan coba lagi.");
+    //     }
+    //     return true;
+    // }
 
     private static void addElement() {
         System.out.print("Masukkan karakter untuk ditambahkan: ");
@@ -128,6 +159,12 @@ public class BinaryTreeCLI {
         } else {
             System.out.println("Gagal menambahkan '" + key + "' (nilai duplikat).");
         }
+
+        if (success) {
+            System.out.println("Berhasil menambahkan '" + key + "' ke Tree.");
+            insertionHistory.add(key);
+        }
+
     }
 
     private static void removeElement() {
@@ -145,6 +182,7 @@ public class BinaryTreeCLI {
         boolean success = currentTree.remove(key);
         if (success) {
             System.out.println("Berhasil menghapus '" + key + "' dari Tree.");
+            insertionHistory.remove(Character.valueOf(key));
         } else {
             System.out.println("Gagal menghapus '" + key + "' (tidak ditemukan di Tree).");
         }
@@ -201,9 +239,11 @@ public class BinaryTreeCLI {
         int addedCount = 0;
         int duplicateCount = 0;
         for (char c : input.toCharArray()) {
-            if (c == ' ') continue;
+            if (c == ' ')
+                continue;
             if (currentTree.add(c)) {
                 addedCount++;
+                insertionHistory.add(c);
             } else {
                 duplicateCount++;
             }
@@ -211,6 +251,53 @@ public class BinaryTreeCLI {
         System.out.println("Menambahkan " + addedCount + " elemen.");
         if (duplicateCount > 0) {
             System.out.println("Melewatkan " + duplicateCount + " duplikat.");
+        }
+    }
+
+    private static void addRandomElements() {
+        System.out.print("Masukkan jumlah elemen acak yang ingin ditambahkan: ");
+        int count = getIntInput();
+        if (count <= 0) {
+            System.out.println("Jumlah harus lebih besar dari 0!");
+            return;
+        }
+
+        System.out.print("Gunakan huruf (A–Z) atau angka (0–9)? (h/a): ");
+        String type = scanner.nextLine().trim().toLowerCase();
+
+        Random random = new Random(System.nanoTime()); // pakai seed unik setiap kali
+        int totalPossible = type.equals("a") ? 10 : 26;
+
+        if (count > totalPossible) {
+            System.out.println("Jumlah elemen terlalu banyak! Maksimal " + totalPossible + ".");
+            return;
+        }
+
+        List<Character> possibleChars = new ArrayList<>();
+        if (type.equals("a")) {
+            for (char c = '0'; c <= '9'; c++)
+                possibleChars.add(c);
+        } else {
+            for (char c = 'A'; c <= 'Z'; c++)
+                possibleChars.add(c);
+        }
+
+        Collections.shuffle(possibleChars, random);
+
+        int addedCount = 0;
+        for (char c : possibleChars) {
+            if (addedCount >= count)
+                break;
+            if (currentTree.add(c)) {
+                System.out.println("Menambahkan: " + c);
+                insertionHistory.add(c);
+                addedCount++;
+            }
+        }
+
+        System.out.println("\nBerhasil menambahkan " + addedCount + " elemen acak unik.");
+        if (addedCount < count) {
+            System.out.println("Beberapa elemen dilewati karena sudah ada di tree.");
         }
     }
 
@@ -228,8 +315,10 @@ public class BinaryTreeCLI {
         int removedCount = 0;
         int notFoundCount = 0;
         for (char c : input.toCharArray()) {
-            if (c == ' ') continue;
+            if (c == ' ')
+                continue;
             if (currentTree.remove(c)) {
+                insertionHistory.remove(Character.valueOf(c));
                 removedCount++;
             } else {
                 notFoundCount++;
@@ -248,6 +337,7 @@ public class BinaryTreeCLI {
             currentTree = null;
             currentTreeType = null;
             System.out.println("Tree dibersihkan!");
+            insertionHistory.clear();
         } else {
             System.out.println("Operasi dibatalkan.");
         }
@@ -259,8 +349,11 @@ public class BinaryTreeCLI {
         System.out.println("Ukuran: " + currentTree.getSize());
         System.out.println("Kosong: " + (currentTree.getSize() == 0 ? "Ya" : "Tidak"));
         if (currentTree.getSize() > 0) {
-            System.out.println("\nElemen saat ini (In-Order): ");
-            currentTree.inOrder();
+            System.out.println("\nElemen saat ini (berdasarkan urutan penambahan): ");
+            for (char c : insertionHistory) {
+                System.out.print(c + " ");
+            }
+            System.out.println();
         }
     }
 
