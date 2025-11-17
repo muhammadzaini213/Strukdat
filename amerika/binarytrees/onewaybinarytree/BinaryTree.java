@@ -3,7 +3,7 @@ package amerika.binarytrees.onewaybinarytree;
 import amerika.nodes.bitreenode.BinaryTreeNode;
 
 public class BinaryTree {
-    
+
     protected BinaryTreeNode root;
     protected int size = 0;
 
@@ -14,6 +14,20 @@ public class BinaryTree {
             return true;
         }
         return insert(root, key);
+    }
+
+    public boolean find(char key) {
+        return findNode(root, key) != null;
+    }
+
+    protected BinaryTreeNode findNode(BinaryTreeNode node, char key) {
+        if (node == null)
+            return null;
+        if (key == node.getKey())
+            return node;
+        if (key < node.getKey())
+            return findNode(node.getLeft(), key);
+        return findNode(node.getRight(), key);
     }
 
     private boolean insert(BinaryTreeNode node, char key) {
@@ -27,7 +41,7 @@ public class BinaryTree {
             } else {
                 return insert(node.getLeft(), key);
             }
-        } else  {
+        } else {
             if (node.getRight() == null) {
                 node.setRight(new BinaryTreeNode(key));
                 size++;
@@ -39,15 +53,18 @@ public class BinaryTree {
     }
 
     public boolean remove(char key) {
-        if (root == null) return false;
-        if (!contains(root, key)) return false;
+        if (root == null)
+            return false;
+        if (!contains(root, key))
+            return false;
         root = delete(root, key);
         size--;
         return true;
     }
 
     private BinaryTreeNode delete(BinaryTreeNode node, char key) {
-        if (node == null) return null;
+        if (node == null)
+            return null;
 
         if (key < node.getKey()) {
             node.setLeft(delete(node.getLeft(), key));
@@ -78,18 +95,21 @@ public class BinaryTree {
     }
 
     private boolean contains(BinaryTreeNode node, char key) {
-        if (node == null) return false;
-        if (key == node.getKey()) return true;
+        if (node == null)
+            return false;
+        if (key == node.getKey())
+            return true;
         return key < node.getKey() ? contains(node.getLeft(), key) : contains(node.getRight(), key);
     }
 
-        public void preOrder() {
+    public void preOrder() {
         preOrder(root);
         System.out.println();
     }
 
     private void preOrder(BinaryTreeNode node) {
-        if (node == null) return;
+        if (node == null)
+            return;
         System.out.print(node.getKey() + " ");
         preOrder(node.getLeft());
         preOrder(node.getRight());
@@ -101,7 +121,8 @@ public class BinaryTree {
     }
 
     private void inOrder(BinaryTreeNode node) {
-        if (node == null) return;
+        if (node == null)
+            return;
         inOrder(node.getLeft());
         System.out.print(node.getKey() + " ");
         inOrder(node.getRight());
@@ -113,7 +134,8 @@ public class BinaryTree {
     }
 
     private void postOrder(BinaryTreeNode node) {
-        if (node == null) return;
+        if (node == null)
+            return;
         postOrder(node.getLeft());
         postOrder(node.getRight());
         System.out.print(node.getKey() + " ");

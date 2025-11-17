@@ -37,7 +37,7 @@ public class BinaryTreeCLI {
     private static void selectTreeType() {
         System.out.println("\nPilih Jenis Binary Tree:");
         System.out.println("1. Binary Tree Satu Arah");
-        System.out.println("2. Binary Tree Dua Arah (dengan referensi parent)");
+        // System.out.println("2. Binary Tree Dua Arah (dengan referensi parent)");
         System.out.println("0. Keluar");
         System.out.print("Masukkan pilihan Anda: ");
         int choice = getIntInput();
@@ -47,11 +47,11 @@ public class BinaryTreeCLI {
                 currentTreeType = "Binary Tree Satu Arah";
                 System.out.println("\n" + currentTreeType + " berhasil dibuat!");
                 break;
-            case 2:
-                currentTree = new TwoWayBinaryTree();
-                currentTreeType = "Binary Tree Dua Arah";
-                System.out.println("\n" + currentTreeType + " berhasil dibuat!");
-                break;
+            // case 2:
+            //     currentTree = new TwoWayBinaryTree();
+            //     currentTreeType = "Binary Tree Dua Arah";
+            //     System.out.println("\n" + currentTreeType + " berhasil dibuat!");
+            //     break;
             case 0:
                 System.out.println("\nKeluar...");
                 System.exit(0);
